@@ -1,0 +1,67 @@
+# ==============================================================================
+# KOVAI PRIME LUBRICANTS - HARDENED PRODUCTION CONFIGURATION
+# Optimized for Penetration Testing Compliance, Speed, Security, and SEO
+# ==============================================================================
+
+# 1. Disable Directory Browsing / Directory Indexing (CWE-548 Fix)
+Options -Indexes
+
+# 2. Default Directory Index (Prefer index.html, fallback to index.php)
+DirectoryIndex index.html index.php
+
+# 3. Character Encoding
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .json .xml
+
+# 4. Comprehensive Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), camera=(), microphone=()"
+    Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:;"
+</IfModule>
+
+# 5. GZIP / Deflate Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
+    AddOutputFilterByType DEFLATE application/json application/xml application/xhtml+xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# 6. Browser Caching & Expiration
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # Images & Media (1 Year)
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Web Fonts (1 Year)
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+
+    # CSS & JavaScript (1 Month)
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+
+    # HTML (1 Hour - ensures updates reflect quickly)
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# 7. Protect Hidden & Configuration Files
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# 8. Protect data directory JSON & log files
+<FilesMatch "\.(json|lock|log|py|env|backup)$">
+    Require all denied
+</FilesMatch>

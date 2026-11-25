@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Kovai Prime Lubricants</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome 6 Pro Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --kpl-navy: #0D205E;
+            --kpl-navy-dark: #071230;
+            --kpl-navy-light: #153285;
+            --kpl-gold: #F5B000;
+            --kpl-gold-dark: #D97706;
+            --kpl-gold-subtle: #FFFBEB;
+            --kpl-border: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 15% 20%, rgba(245, 176, 0, 0.12) 0%, transparent 40%),
+                        radial-gradient(circle at 85% 80%, rgba(21, 50, 133, 0.25) 0%, transparent 50%),
+                        linear-gradient(135deg, #071230 0%, #0D205E 50%, #0B1947 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+            color: #FFFFFF;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 460px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            border: 1px solid rgba(245, 176, 0, 0.4);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            color: #0F172A;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.97) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .card-top-trim {
+            height: 6px;
+            background: linear-gradient(90deg, var(--kpl-navy) 0%, var(--kpl-gold) 100%);
+            width: 100%;
+        }
+
+        .login-header {
+            padding: 30px 32px 18px;
+            text-align: center;
+            border-bottom: 1px solid var(--kpl-border);
+            background: linear-gradient(180deg, rgba(13, 32, 94, 0.03) 0%, transparent 100%);
+        }
+
+        .brand-logo-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 14px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(13, 32, 94, 0.08);
+            border: 1px solid rgba(13, 32, 94, 0.08);
+            margin-bottom: 14px;
+        }
+
+        .brand-logo-img {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .login-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--kpl-navy);
+            letter-spacing: -0.3px;
+            margin-bottom: 2px;
+        }
+
+        .login-subtitle {
+            font-size: 13px;
+            color: #64748B;
+            font-weight: 500;
+        }
+
+        .login-body {
+            padding: 24px 32px 32px;
+        }
+
+        .form-floating-custom {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .form-floating-custom label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--kpl-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .input-group-custom {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group-custom .input-icon {
+            position: absolute;
+            left: 14px;
+            color: #94A3B8;
+            font-size: 14px;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .form-control-kpl {
+            width: 100%;
+            height: 46px;
+            padding: 10px 14px 10px 42px;
+            border-radius: 10px;
+            border: 1.5px solid #CBD5E1;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0F172A;
+            background: #F8FAFC;
+            transition: all 0.2s;
+        }
+
+        .form-control-kpl:focus {
+            outline: none;
+            border-color: var(--kpl-navy);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(13, 32, 94, 0.12);
+        }
+
+        .toggle-password-btn {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #94A3B8;
+            cursor: pointer;
+            padding: 6px;
+            font-size: 14px;
+            z-index: 5;
+        }
+
+        .toggle-password-btn:hover {
+            color: var(--kpl-navy);
+        }
+
+        .btn-kpl-submit {
+            width: 100%;
+            height: 46px;
+            background: linear-gradient(135deg, var(--kpl-navy) 0%, var(--kpl-navy-light) 100%);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(13, 32, 94, 0.25);
+            transition: all 0.2s;
+        }
+
+        .btn-kpl-submit:hover {
+            background: linear-gradient(135deg, #091742 0%, var(--kpl-navy) 100%);
+            transform: translateY(-1px);
+        }
+
+
+
+        .back-to-site-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748B;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .back-to-site-link:hover {
+            color: var(--kpl-navy);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="card-top-trim"></div>
+
+        <div class="login-header">
+            <div class="brand-logo-wrap">
+                <img src="assets/images/logo.png" alt="Kovai Prime Lubricants" class="brand-logo-img">
+            </div>
+            <h1 class="login-title">Operations Nexus</h1>
+            <p class="login-subtitle">Dashboard Authentication Gateway</p>
+        </div>
+
+        <div class="login-body">
+            <div id="loginAlert" class="alert d-none mb-3 py-2 px-3 fs-13 rounded-3" role="alert"></div>
+
+            <form id="loginForm" autocomplete="off">
+                <div class="form-floating-custom">
+                    <label for="loginUsername">Admin Username</label>
+                    <div class="input-group-custom">
+                        <i class="fas fa-user-shield input-icon"></i>
+                        <input type="text" class="form-control-kpl" id="loginUsername" placeholder="e.g. manimegalai or karan" required autofocus>
+                    </div>
+                </div>
+
+                <div class="form-floating-custom">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label for="loginPassword" class="mb-0">Password</label>
+                        
+                    </div>
+                    <div class="input-group-custom">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" class="form-control-kpl" id="loginPassword" placeholder="Enter password" required>
+                        <button type="button" class="toggle-password-btn" id="togglePasswordBtn" title="Show or hide password">
+                            <i class="fas fa-eye" id="passwordEyeIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="form-check fs-13">
+                        <input class="form-check-input" type="checkbox" id="loginRemember" checked>
+                        <label class="form-check-label text-muted" for="loginRemember">
+                            Remember device
+                        </label>
+                    </div>
+                    <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle fs-11 px-2 py-0.5 rounded-pill">
+                        <i class="fas fa-lock me-1"></i> Authorized
+                    </span>
+                </div>
+
+                <button type="submit" class="btn-kpl-submit" id="loginSubmitBtn">
+                    <i class="fas fa-right-to-bracket text-kpl-gold"></i>
+                    <span id="btnSubmitText">Sign In to Dashboard</span>
+                </button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="index.html" class="back-to-site-link">
+                    <i class="fas fa-arrow-left fs-11"></i> Return to Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+
+        const toggleBtn = document.getElementById('togglePasswordBtn');
+        const passInput = document.getElementById('loginPassword');
+        const eyeIcon = document.getElementById('passwordEyeIcon');
+
+        toggleBtn.addEventListener('click', function () {
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const loginAlert = document.getElementById('loginAlert');
+        if (urlParams.get('logout') === 'true') {
+            showAlert('You have been signed out safely.', 'success');
+        } else if (urlParams.get('redirect')) {
+            showAlert('Please sign in to access the Dashboard.', 'info');
+        }
+
+        function showAlert(msg, type = 'danger') {
+            loginAlert.className = `alert alert-${type} mb-3 py-2 px-3 fs-13 rounded-3`;
+            let icon = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+            loginAlert.innerHTML = `<i class="fas ${icon} me-1.5"></i> ${msg}`;
+            loginAlert.classList.remove('d-none');
+        }
+
+        const form = document.getElementById('loginForm');
+        const submitBtn = document.getElementById('loginSubmitBtn');
+        const submitText = document.getElementById('btnSubmitText');
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById('loginUsername').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+            const remember = document.getElementById('loginRemember').checked;
+
+            submitBtn.disabled = true;
+            submitText.innerHTML = '<i class="fas fa-circle-notch fa-spin me-2"></i> Authenticating...';
+
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password, remember })
+                });
+
+                const data = await res.json();
+                if (res.ok && data.status === 'success') {
+                    showAlert('Authentication successful! Loading dashboard...', 'success');
+                    document.cookie = `kpl_session=${data.token}; path=/; max-age=${remember ? 604800 : 86400}; SameSite=Lax`;
+                    setTimeout(() => {
+                        window.location.href = urlParams.get('redirect') || 'dashboard.html';
+                    }, 400);
+                } else {
+                    submitBtn.disabled = false;
+                    submitText.innerHTML = 'Sign In to Dashboard';
+                    showAlert(data.message || 'Invalid username or password.');
+                }
+            } catch (err) {
+                submitBtn.disabled = false;
+                submitText.innerHTML = 'Sign In to Dashboard';
+                showAlert('Network or server error. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

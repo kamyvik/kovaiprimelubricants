@@ -1,0 +1,1378 @@
+<?php
+/**
+ * KOVAI PRIME LUBRICANTS (KPL) - OPERATIONS DASHBOARD (PHP)
+ * Architecture: Seller & Stockist Suite (Categories -> Products)
+ */
+require_once 'includes/data.php';
+
+$jsonFile = __DIR__ . '/data/enquiries.json';
+$enquiriesData = [];
+if (file_exists($jsonFile)) {
+    $enquiriesData = json_decode(file_get_contents($jsonFile), true) ?? [];
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPL Operations Nexus | Seller & Stockist Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome 6 Pro Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Chart.js 4.4 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Executive Light Dashboard Stylesheet -->
+    <link rel="stylesheet" href="assets/css/dashboard.css?v=2.6">
+</head>
+<body class="dashboard-body">
+
+    <div class="dashboard-wrapper">
+
+        <!-- ========================================================
+             SIDEBAR NAVIGATION
+             Order: Dashboard -> Categories -> Products -> Gallery -> Enquiries
+             ======================================================== -->
+        <aside class="dash-sidebar">
+            <div>
+                <!-- Brand Header -->
+                <div class="dash-sidebar-brand justify-content-between">
+                    <a href="dashboard.php" class="d-flex align-items-center gap-2 text-decoration-none">
+                        <img src="assets/images/logo.png" alt="Kovai Prime Lubricants Logo" class="dash-sidebar-logo" style="height: 44px; width: auto; object-fit: contain;">
+                        <div class="d-flex flex-column">
+                            <span class="fw-extrabold text-kpl-navy fs-15 tracking-tight lh-1">KOVAI PRIME</span>
+                            <span class="text-kpl-gold fw-bold fs-10 tracking-widest text-uppercase">LUBRICANTS</span>
+                        </div>
+                    </a>
+                    <button class="btn btn-sm btn-outline-secondary d-lg-none p-1 px-2 border-0" id="closeSidebarBtn">
+                        <i class="fas fa-times fs-5"></i>
+                    </button>
+                </div>
+
+                <!-- Nav Menu Links -->
+                <ul class="dash-nav-list">
+                    <li class="dash-nav-header">Seller Control Desk</li>
+                    
+                    <!-- Dashboard -->
+                    <li class="dash-nav-item">
+                        <a href="#overview" class="dash-nav-link active" data-target="tab-overview">
+                            <span><i class="fas fa-chart-pie"></i> Dashboard Overview</span>
+                        </a>
+                    </li>
+
+                    <!-- 1st: Categories -->
+                    <li class="dash-nav-item">
+                        <a href="#categories" class="dash-nav-link" data-target="tab-categories">
+                            <span><i class="fas fa-tags"></i> Categories</span>
+                        </a>
+                    </li>
+
+                    <!-- 2nd: Products -->
+                    <li class="dash-nav-item">
+                        <a href="#products" class="dash-nav-link" data-target="tab-products">
+                            <span><i class="fas fa-boxes-stacked"></i> Products</span>
+                        </a>
+                    </li>
+
+                    <!-- Gallery Manager -->
+                    <li class="dash-nav-item">
+                        <a href="#gallery" class="dash-nav-link" data-target="tab-gallery">
+                            <span><i class="fas fa-images"></i> Gallery Manager</span>
+                        </a>
+                    </li>
+
+                    <!-- Customer Enquiries -->
+                    <li class="dash-nav-item">
+                        <a href="#enquiries" class="dash-nav-link" data-target="tab-enquiries">
+                            <span><i class="fas fa-envelope-open-text"></i> Customer Enquiries</span>
+                        </a>
+                    </li>
+
+                    <li class="dash-nav-header mt-3">Public Website</li>
+                    <li class="dash-nav-item">
+                        <a href="#backToSiteModal" class="dash-nav-link text-kpl-navy fw-semibold" data-bs-toggle="modal" data-bs-target="#backToSiteModal" id="backToPublicSiteBtn" title="Return to public site with reminder">
+                            <span><i class="fas fa-arrow-left text-kpl-gold"></i> Back to Public Site</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sidebar Footer / Exit Dashboard -->
+            <div class="dash-sidebar-footer">
+                <button type="button" class="btn dash-exit-btn w-100 d-flex align-items-center justify-content-center gap-2 py-2 fs-13 fw-semibold rounded-3 shadow-2xs" data-bs-toggle="modal" data-bs-target="#backToSiteModal" title="Exit Dashboard Console">
+                    <i class="fas fa-right-from-bracket"></i>
+                    <span>Exit Dashboard</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- ========================================================
+             MAIN DASHBOARD CONTENT
+             ======================================================== -->
+        <main class="dash-main">
+
+            <!-- TOPBAR HEADER -->
+            <!-- Mobile Navigation Bar (Small screens < 992px only) -->
+            <div class="d-lg-none d-flex align-items-center justify-content-between p-3 bg-white border-bottom shadow-2xs">
+                <button class="btn btn-sm btn-outline-secondary" id="toggleSidebarBtn">
+                    <i class="fas fa-bars fs-5"></i>
+                </button>
+                <div class="fw-bold text-kpl-navy fs-13 d-flex align-items-center gap-1.5">
+                    <img src="assets/images/logo.png" alt="Logo" style="height: 24px; width: auto;">
+                    <span>KOVAI PRIME LUBRICANTS</span>
+                </div>
+            </div>
+
+            <!-- WORKSPACE CONTAINER -->
+            <div class="p-3 p-md-4 p-xl-4 flex-grow-1">
+
+                <!-- ========================================================
+                     TAB 1: DASHBOARD OVERVIEW
+                     ======================================================== -->
+                <div class="dash-tab-pane" id="tab-overview">
+                    
+                    <!-- Welcome Hero Card -->
+                    <div class="dash-glass p-3 px-4 mb-4 position-relative overflow-hidden" style="border-left: 5px solid var(--dash-gold-bright) !important;">
+                        <h3 class="fw-extrabold text-kpl-navy mb-0">
+                            Welcome to <span class="text-kpl-gold"><?php echo $company['name'] ?? 'Kovai Prime Lubricants'; ?></span>
+                        </h3>
+                    </div>
+
+                    <!-- 4 REQUIRED OVERVIEW METRIC CARDS -->
+                    <div class="row g-4 mb-4">
+
+                        <!-- Metric 1: Categories -->
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="kpi-card h-100 d-flex flex-column justify-content-between" onclick="switchTab('tab-categories');" style="cursor: pointer;">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div class="kpi-icon-wrap kpi-icon-cyan">
+                                            <i class="fas fa-tags"></i>
+                                        </div>
+                                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle fs-11 px-2.5 py-0.5 rounded-pill fw-bold">Categories</span>
+                                    </div>
+                                    <div class="kpi-number" id="kpiTotalCategories">6</div>
+                                    <div class="text-muted fs-13 fw-semibold mt-1">Total Categories</div>
+                                </div>
+                                <div class="text-muted fs-11 mt-3 pt-2 border-top d-flex justify-content-between">
+                                    <span>Classifications:</span>
+                                    <strong class="text-primary fw-bold">Active</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 2: Products -->
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="kpi-card h-100 d-flex flex-column justify-content-between" onclick="switchTab('tab-products');" style="cursor: pointer;">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div class="kpi-icon-wrap kpi-icon-emerald">
+                                            <i class="fas fa-boxes-stacked"></i>
+                                        </div>
+                                        <span class="badge bg-success-subtle text-success border border-success-subtle fs-11 px-2.5 py-0.5 rounded-pill fw-bold">Products</span>
+                                    </div>
+                                    <div class="kpi-number" id="kpiTotalProducts">11</div>
+                                    <div class="text-muted fs-13 fw-semibold mt-1">Listed Products</div>
+                                </div>
+                                <div class="text-muted fs-11 mt-3 pt-2 border-top d-flex justify-content-between">
+                                    <span>Assignment:</span>
+                                    <strong class="text-success fw-bold" id="kpiProductsCategorySubtext">By Category</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 3: Gallery -->
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="kpi-card h-100 d-flex flex-column justify-content-between" onclick="switchTab('tab-gallery');" style="cursor: pointer;">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div class="kpi-icon-wrap kpi-icon-purple">
+                                            <i class="fas fa-images"></i>
+                                        </div>
+                                        <span class="badge bg-info-subtle text-info border border-info-subtle fs-11 px-2.5 py-0.5 rounded-pill fw-bold">Gallery</span>
+                                    </div>
+                                    <div class="kpi-number" id="kpiTotalGallery">6</div>
+                                    <div class="text-muted fs-13 fw-semibold mt-1">Gallery Photos</div>
+                                </div>
+                                <div class="text-muted fs-11 mt-3 pt-2 border-top d-flex justify-content-between">
+                                    <span>Depot Media:</span>
+                                    <strong class="text-dark fw-bold" id="kpiGalleryUploadedSubtext">6 Uploaded</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 4: Customer Enquiries -->
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="kpi-card h-100 d-flex flex-column justify-content-between" onclick="switchTab('tab-enquiries');" style="cursor: pointer;">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div class="kpi-icon-wrap kpi-icon-gold">
+                                            <i class="fas fa-envelope-open-text"></i>
+                                        </div>
+                                        <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle fs-11 px-2.5 py-0.5 rounded-pill fw-bold" id="kpiNewEnquiriesBadge">2 New</span>
+                                    </div>
+                                    <div class="kpi-number" id="kpiTotalLeads">6</div>
+                                    <div class="text-muted fs-13 fw-semibold mt-1">Customer Enquiries</div>
+                                </div>
+                                <div class="text-muted fs-11 mt-3 pt-2 border-top d-flex justify-content-between">
+                                    <span>Pending:</span>
+                                    <strong class="text-kpl-gold fw-bold" id="kpiPendingQuotes">2 New Quotes</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- DATA BREAKDOWN ROW: Products by Category + Enquiries by Status -->
+                    <div class="row g-4 mb-4">
+
+                        <!-- Left: Products Catalog by Category -->
+                        <div class="col-lg-7">
+                            <div class="dash-glass p-4 h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                        <div>
+                                            <h5 class="fw-bold text-kpl-navy mb-0">Products Catalog by Category</h5>
+                                            <small class="text-muted fs-12">Live SKU distribution across registered lubricant categories</small>
+                                        </div>
+                                        <span class="badge bg-light text-kpl-navy border fs-11 px-2.5 py-1" id="overviewCatalogSummaryBadge">11 Products in 6 Categories</span>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2.5 my-2" id="overviewCategoryDistributionList">
+                                        <!-- Category Item 1 -->
+                                        <div class="dash-sub-card p-2.5 rounded-3" onclick="viewCategoryProducts('Automotive Engine Oils');" style="cursor: pointer;" title="View Automotive Engine Oils products">
+                                            <div class="d-flex justify-content-between align-items-center mb-1.5">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <i class="fas fa-car-side text-muted fs-12" style="width: 16px;"></i>
+                                                    <span class="text-dark fw-bold fs-12">Automotive Engine Oils</span>
+                                                </div>
+                                                <span class="font-monospace text-dark fs-12 fw-bold">3 <small class="text-muted fw-normal fs-11">(27%)</small></span>
+                                            </div>
+                                            <div class="dash-progress-track" style="height: 6px;">
+                                                <div class="dash-progress-fill" style="width: 27%; background: linear-gradient(90deg, #0D205E, #1E3A8A);"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Category Item 2 -->
+                                        <div class="dash-sub-card p-2.5 rounded-3" onclick="viewCategoryProducts('Industrial Hydraulic Oils');" style="cursor: pointer;" title="View Industrial Hydraulic Oils products">
+                                            <div class="d-flex justify-content-between align-items-center mb-1.5">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <i class="fas fa-industry text-muted fs-12" style="width: 16px;"></i>
+                                                    <span class="text-dark fw-bold fs-12">Industrial Hydraulic Oils</span>
+                                                </div>
+                                                <span class="font-monospace text-dark fs-12 fw-bold">2 <small class="text-muted fw-normal fs-11">(18%)</small></span>
+                                            </div>
+                                            <div class="dash-progress-track" style="height: 6px;">
+                                                <div class="dash-progress-fill" style="width: 18%; background: linear-gradient(90deg, #F59E0B, #D97706);"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Category Item 3 -->
+                                        <div class="dash-sub-card p-2.5 rounded-3" onclick="viewCategoryProducts('Gear & Transmission Fluids');" style="cursor: pointer;" title="View Gear & Transmission Fluids products">
+                                            <div class="d-flex justify-content-between align-items-center mb-1.5">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <i class="fas fa-gears text-muted fs-12" style="width: 16px;"></i>
+                                                    <span class="text-dark fw-bold fs-12">Gear & Transmission Fluids</span>
+                                                </div>
+                                                <span class="font-monospace text-dark fs-12 fw-bold">2 <small class="text-muted fw-normal fs-11">(18%)</small></span>
+                                            </div>
+                                            <div class="dash-progress-track" style="height: 6px;">
+                                                <div class="dash-progress-fill" style="width: 18%; background: linear-gradient(90deg, #0284C7, #0369A1);"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Category Item 4 -->
+                                        <div class="dash-sub-card p-2.5 rounded-3" onclick="viewCategoryProducts('High-Temperature Greases');" style="cursor: pointer;" title="View High-Temperature Greases products">
+                                            <div class="d-flex justify-content-between align-items-center mb-1.5">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <i class="fas fa-screwdriver-wrench text-muted fs-12" style="width: 16px;"></i>
+                                                    <span class="text-dark fw-bold fs-12">High-Temperature Greases</span>
+                                                </div>
+                                                <span class="font-monospace text-dark fs-12 fw-bold">2 <small class="text-muted fw-normal fs-11">(18%)</small></span>
+                                            </div>
+                                            <div class="dash-progress-track" style="height: 6px;">
+                                                <div class="dash-progress-fill" style="width: 18%; background: linear-gradient(90deg, #10B981, #059669);"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Category Item 5 -->
+                                        <div class="dash-sub-card p-2.5 rounded-3" onclick="viewCategoryProducts('Metalworking & Cutting Fluids');" style="cursor: pointer;" title="View Metalworking & Cutting Fluids products">
+                                            <div class="d-flex justify-content-between align-items-center mb-1.5">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <i class="fas fa-microchip text-muted fs-12" style="width: 16px;"></i>
+                                                    <span class="text-dark fw-bold fs-12">Metalworking & Cutting Fluids</span>
+                                                </div>
+                                                <span class="font-monospace text-dark fs-12 fw-bold">2 <small class="text-muted fw-normal fs-11">(18%)</small></span>
+                                            </div>
+                                            <div class="dash-progress-track" style="height: 6px;">
+                                                <div class="dash-progress-fill" style="width: 18%; background: linear-gradient(90deg, #8B5CF6, #6D28D9);"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between pt-3 mt-3 border-top fs-12 text-muted">
+                                    <span id="overviewTopCategoryText"><i class="fas fa-check-circle text-success me-1"></i> Top Category: <strong>Automotive Engine Oils (3 Products)</strong></span>
+                                    <a href="#products" class="text-primary text-decoration-none fw-semibold" onclick="switchTab('tab-products');">View Full Catalog <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Customer Enquiries by Status -->
+                        <div class="col-lg-5">
+                            <div class="dash-glass p-4 h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                        <div>
+                                            <h5 class="fw-bold text-kpl-navy mb-0">Customer Enquiries by Status</h5>
+                                            <small class="text-muted fs-12">Current quote request pipeline</small>
+                                        </div>
+                                        <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle fs-11 px-2.5 py-1" id="overviewEnquiriesSummaryBadge">6 Total Inquiries</span>
+                                    </div>
+                                    <div class="d-flex flex-column gap-2.5 my-2" id="overviewEnquiriesStatusList">
+                                        <!-- Status 1: New -->
+                                        <div class="dash-sub-card p-2.5 rounded-3" onclick="switchTab('tab-enquiries');" style="cursor: pointer;" title="View new enquiries">
+                                            <div class="d-flex justify-content-between align-items-center mb-1.5">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="text-dark fw-bold fs-12">New / Unanswered</span>
+                                                    <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle fs-10 px-1.5 py-0.5 rounded-pill">Action Needed</span>
+                                                </div>
+                                                <span class="font-monospace text-dark fs-12 fw-bold">2 <small class="text-muted fw-normal fs-11">(33%)</small></span>
+                                            </div>
+                                            <div class="dash-progress-track" style="height: 6px;">
+                                                <div class="dash-progress-fill" style="width: 33%; background: linear-gradient(90deg, #F59E0B, #D97706);"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Status 2: Quoted -->
+                                        <div class="dash-sub-card p-2.5 rounded-3" onclick="switchTab('tab-enquiries');" style="cursor: pointer;" title="View quoted enquiries">
+                                            <div class="d-flex justify-content-between align-items-center mb-1.5">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="text-dark fw-bold fs-12">Quoted / Sent</span>
+                                                </div>
+                                                <span class="font-monospace text-dark fs-12 fw-bold">2 <small class="text-muted fw-normal fs-11">(33%)</small></span>
+                                            </div>
+                                            <div class="dash-progress-track" style="height: 6px;">
+                                                <div class="dash-progress-fill" style="width: 33%; background: linear-gradient(90deg, #0284C7, #0369A1);"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Status 3: Dispatched -->
+                                        <div class="dash-sub-card p-2.5 rounded-3" onclick="switchTab('tab-enquiries');" style="cursor: pointer;" title="View dispatched enquiries">
+                                            <div class="d-flex justify-content-between align-items-center mb-1.5">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="text-dark fw-bold fs-12">Dispatched / In Transit</span>
+                                                </div>
+                                                <span class="font-monospace text-dark fs-12 fw-bold">1 <small class="text-muted fw-normal fs-11">(17%)</small></span>
+                                            </div>
+                                            <div class="dash-progress-track" style="height: 6px;">
+                                                <div class="dash-progress-fill" style="width: 17%; background: linear-gradient(90deg, #8B5CF6, #6D28D9);"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Status 4: Completed -->
+                                        <div class="dash-sub-card p-2.5 rounded-3" onclick="switchTab('tab-enquiries');" style="cursor: pointer;" title="View completed enquiries">
+                                            <div class="d-flex justify-content-between align-items-center mb-1.5">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="text-dark fw-bold fs-12">Completed / Fulfilled</span>
+                                                </div>
+                                                <span class="font-monospace text-dark fs-12 fw-bold">1 <small class="text-muted fw-normal fs-11">(17%)</small></span>
+                                            </div>
+                                            <div class="dash-progress-track" style="height: 6px;">
+                                                <div class="dash-progress-fill" style="width: 17%; background: linear-gradient(90deg, #10B981, #059669);"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between pt-3 mt-3 border-top fs-12 text-muted">
+                                    <span id="overviewPendingEnquiriesText">Pending: <strong class="text-kpl-gold fw-bold">2 New Requests</strong></span>
+                                    <a href="#enquiries" class="text-primary text-decoration-none fw-semibold" onclick="switchTab('tab-enquiries');">Manage Enquiries <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- SPLIT ROW: Recent Inquiries Preview + Quick Stock Monitor -->
+                    <div class="row g-4 mb-4">
+                        
+                        <!-- Recent Inbound Leads Mini Table -->
+                        <div class="col-lg-7">
+                            <div class="dash-glass p-4 h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div>
+                                            <h5 class="fw-bold text-kpl-navy mb-0">Latest Customer Inquiries</h5>
+                                            <small class="text-muted fs-12">Incoming quote requests from website</small>
+                                        </div>
+                                        <a href="#enquiries" class="btn btn-sm btn-outline-warning fs-12 text-dark fw-semibold" onclick="switchTab('tab-enquiries');">
+                                            View All Inquiries <i class="fas fa-arrow-right ms-1"></i>
+                                        </a>
+                                    </div>
+
+                                    <div class="table-responsive" style="overflow-x: hidden;">
+                                        <table class="table table-dash table-dash-mini align-middle mb-0" style="table-layout: fixed; width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 38%;">Client / Workshop</th>
+                                                    <th style="width: 34%;">Grade Requested</th>
+                                                    <th style="width: 16%;">Status</th>
+                                                    <th style="width: 12%;" class="text-end">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="miniEnquiriesTableBody">
+                                                <!-- Dynamically injected via JS -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-wrap align-items-center justify-content-between pt-3 mt-3 border-top fs-12 text-muted">
+                                    <span id="miniEnquiryLeadStatsText"><i class="fas fa-clock text-warning me-1"></i> <strong>2 New Quote Requests</strong> awaiting response</span>
+                                    <a href="#enquiries" class="text-primary text-decoration-none fw-semibold" onclick="switchTab('tab-enquiries');">Open Inquiries Desk <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Stock & Inventory Status -->
+                        <div class="col-lg-5">
+                            <div class="dash-glass p-4 h-100 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <div>
+                                            <h5 class="fw-bold text-kpl-navy mb-0">Product Stock & Inventory</h5>
+                                            <small class="text-muted fs-12">Live stock levels from product catalog</small>
+                                        </div>
+                                        <a href="#products" class="btn btn-sm btn-outline-secondary fs-12 text-dark fw-semibold" onclick="switchTab('tab-products');">
+                                            Manage Products <i class="fas fa-arrow-right ms-1"></i>
+                                        </a>
+                                    </div>
+
+                                    <div class="d-flex flex-column gap-2.5" id="miniProductStockList">
+                                        <!-- Dynamically populated from products data via JS -->
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-wrap align-items-center justify-content-between pt-3 mt-3 border-top fs-12 text-muted">
+                                    <span id="miniStockSummaryText"><i class="fas fa-boxes-stacked text-primary me-1"></i> Catalog: <strong>11 Products in Stock</strong></span>
+                                    <a href="#products" class="text-primary text-decoration-none fw-semibold" onclick="switchTab('tab-products');">View All Stock <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    </div>
+
+                <!-- ========================================================
+                     TAB 2: CATEGORIES (1ST STEP - SEPARATE PAGE)
+                     ======================================================== -->
+                <div class="dash-tab-pane d-none" id="tab-categories">
+                    
+                    <!-- Distinct Header Card (Visible Separately) -->
+                    <div class="dash-glass p-4 mb-4">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="dash-brand-avatar" style="width: 44px; height: 44px; border-radius: 10px; font-size: 1.25rem;">
+                                    <i class="fas fa-tags"></i>
+                                </div>
+                                <h4 class="fw-extrabold text-kpl-navy mb-0 fs-20">Categories Management</h4>
+                            </div>
+                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                <button class="btn btn-kpl-gold btn-sm px-3 py-2 shadow-sm fw-semibold" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                                    <i class="fas fa-plus me-1"></i> Add New Category
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm px-3 py-2 text-dark fw-semibold" onclick="switchTab('tab-products');">
+                                    <span>Go to Products</span> <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categories Grid (Distinct Cards Below) -->
+                    <div class="row g-4 mb-4" id="categoriesGrid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+
+                </div>
+
+                <!-- ========================================================
+                     TAB 3: PRODUCTS (2ND STEP - SEPARATE PAGE)
+                     ======================================================== -->
+                <div class="dash-tab-pane d-none" id="tab-products">
+                    
+                    <!-- Distinct Header Card (Visible Separately) -->
+                    <div class="dash-glass p-4 mb-4">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="dash-brand-avatar" style="width: 44px; height: 44px; border-radius: 10px; font-size: 1.25rem;">
+                                    <i class="fas fa-boxes-stacked"></i>
+                                </div>
+                                <h4 class="fw-extrabold text-kpl-navy mb-0 fs-20">Product Management</h4>
+                            </div>
+                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                <a href="products.html" target="_blank" class="btn btn-outline-secondary btn-sm px-3 py-2 text-dark fw-semibold" title="View commercial products catalog on live website">
+                                    <i class="fas fa-arrow-up-right-from-square me-1"></i> View Live Site
+                                </a>
+                                <button class="btn btn-kpl-gold btn-sm px-3 py-2 shadow-sm fw-semibold" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                                    <i class="fas fa-plus me-1"></i> Add Product
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Catalog Content Card -->
+                    <div class="dash-glass p-4 mb-4">
+
+                        <!-- Products Filter & Search Toolbar (Neat & Modern) -->
+                        <div class="p-3 mb-4 rounded-3 border bg-light dash-filter-toolbar">
+                            <div class="row g-2.5 align-items-center">
+                                <!-- Search Input -->
+                                <div class="col-12 col-md-5 col-lg-5">
+                                    <div class="dash-search-box w-100">
+                                        <i class="fas fa-search"></i>
+                                        <input type="text" id="productSearchInput" class="dash-search-input w-100" placeholder="Search by name, grade, brand, ID...">
+                                    </div>
+                                </div>
+
+                                <!-- Category Dropdown Filter -->
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted fs-12 border-end-0 fw-semibold">
+                                            <i class="fas fa-filter text-kpl-gold me-1.5"></i> Category:
+                                        </span>
+                                        <select class="form-select fs-13" id="productCategoryFilterSelect">
+                                            <option value="all">All Categories (11 Products)</option>
+                                            <!-- Populated dynamically via JS -->
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Stock Status Filter -->
+                                <div class="col-8 col-sm-4 col-md-2 col-lg-2">
+                                    <select class="form-select fs-13" id="productStockFilterSelect">
+                                        <option value="all">All Stock Status</option>
+                                        <option value="in_stock">In Stock (&gt; 20)</option>
+                                        <option value="low_stock">Low Stock (≤ 20)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Reset Filters Button -->
+                                <div class="col-4 col-sm-2 col-md-1 col-lg-1 text-end">
+                                    <button type="button" class="btn btn-outline-secondary w-100 fs-13 py-1.5" id="clearProductFiltersBtn" title="Reset all filters">
+                                        <i class="fas fa-rotate-left me-1 d-md-none"></i><span class="d-md-none fs-12">Reset</span>
+                                        <i class="fas fa-rotate-left d-none d-md-inline"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Active Count Label -->
+                        <div class="mb-3">
+                            <span class="text-muted fs-13 fw-semibold" id="productsActiveCount">
+                                Showing commercial lubricant products
+                            </span>
+                        </div>
+
+                        <!-- Products Data Table -->
+                        <div class="table-responsive">
+                            <table class="table table-dash align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name & Grade</th>
+                                        <th>Brand / Supplier</th>
+                                        <th>Category (Click to Filter)</th>
+                                        <th>Pack Size</th>
+                                        <th>Selling Price</th>
+                                        <th>Stock Status</th>
+                                        <th class="text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTableBody">
+                                    <!-- Injected dynamically via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================================
+                     TAB 4: GALLERY ADDING PAGE
+                     ======================================================== -->
+                <div class="dash-tab-pane d-none" id="tab-gallery">
+                    
+                    <!-- Distinct Header Card (Visible Separately) -->
+                    <div class="dash-glass p-4 mb-4">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="dash-brand-avatar" style="width: 44px; height: 44px; border-radius: 10px; font-size: 1.25rem;">
+                                    <i class="fas fa-images"></i>
+                                </div>
+                                <h4 class="fw-extrabold text-kpl-navy mb-0 fs-20">Gallery Management</h4>
+                            </div>
+                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                <a href="gallery.php" target="_blank" class="btn btn-outline-secondary btn-sm px-3 py-2 text-dark fw-semibold" title="View live gallery on public website">
+                                    <i class="fas fa-arrow-up-right-from-square me-1"></i> View Live Site
+                                </a>
+                                <button class="btn btn-kpl-gold btn-sm px-3 py-2 shadow-sm fw-semibold" data-bs-toggle="modal" data-bs-target="#addGalleryModal">
+                                    <i class="fas fa-plus me-1"></i> Add Photo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Content Card -->
+                    <div class="dash-glass p-4 mb-4">
+
+                        <!-- Gallery Filter & Search Toolbar (Neat & Modern) -->
+                        <div class="p-3 mb-4 rounded-3 border bg-light dash-filter-toolbar">
+                            <div class="row g-2.5 align-items-center">
+                                <!-- Search Input -->
+                                <div class="col-12 col-md-6 col-lg-6">
+                                    <div class="dash-search-box w-100">
+                                        <i class="fas fa-search"></i>
+                                        <input type="text" id="gallerySearchInput" class="dash-search-input w-100" placeholder="Search photos by title, album, description...">
+                                    </div>
+                                </div>
+
+                                <!-- Album Category Dropdown Filter -->
+                                <div class="col-12 col-sm-8 col-md-4 col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light text-muted fs-12 border-end-0 fw-semibold">
+                                            <i class="fas fa-filter text-kpl-gold me-1.5"></i> Album:
+                                        </span>
+                                        <select class="form-select fs-13" id="galleryCategoryFilterSelect">
+                                            <option value="all">All Albums (6 Photos)</option>
+                                            <option value="depot">Depot &amp; Storage</option>
+                                            <option value="products">Product Showcase</option>
+                                            <option value="fleet">Fleet Delivery</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Reset Filters Button -->
+                                <div class="col-12 col-sm-4 col-md-2 col-lg-2 text-end">
+                                    <button type="button" class="btn btn-outline-secondary w-100 fs-13 py-1.5" id="clearGalleryFiltersBtn" title="Reset gallery filter">
+                                        <i class="fas fa-rotate-left me-1"></i> Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Active Count Label -->
+                        <div class="mb-3">
+                            <span class="text-muted fs-13 fw-semibold" id="galleryCountText">
+                                Displaying showroom &amp; depot photographs
+                            </span>
+                        </div>
+
+                        <!-- Gallery Cards Grid -->
+                        <div class="row g-4" id="dashGalleryGrid">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================================================
+                     TAB 5: CUSTOMER ENQUIRY VIEWING PAGE (REAL-TIME DATA DESK)
+                     ======================================================== -->
+                <div class="dash-tab-pane d-none" id="tab-enquiries">
+                    
+                    <div class="dash-glass p-4 mb-4">
+                        <!-- Neat Header Action Bar (Customer Details Alone) -->
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-2 border-bottom border-secondary border-opacity-10">
+                            <div>
+                                <h4 class="fw-extrabold text-kpl-navy mb-0 fs-20">Customer Enquiries</h4>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <button type="button" class="btn btn-outline-secondary btn-sm px-3 py-2 fw-semibold d-inline-flex align-items-center gap-1.5" id="syncEnquiriesBtn" title="Fetch latest server enquiries">
+                                    <i class="fas fa-arrows-rotate"></i> Sync Live Data
+                                </button>
+                                <button class="btn btn-kpl-gold btn-sm px-3 py-2 shadow-sm fw-semibold d-inline-flex align-items-center gap-1.5" data-bs-toggle="modal" data-bs-target="#addLeadModal">
+                                    <i class="fas fa-user-plus"></i> Add Customer Enquiry
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Real-Time Customer Metrics Ribbon (Zero Quotes / Pricing) -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-6 col-lg-3">
+                                <div class="p-3 rounded-3 bg-white border shadow-2xs">
+                                    <span class="text-muted fs-11 fw-bold text-uppercase d-block mb-1">Total Inquiries</span>
+                                    <h4 class="fw-extrabold text-kpl-navy mb-0" id="liveTotalInquiriesCount">6 Customers</h4>
+                                    <small class="text-muted fs-11"><i class="fas fa-users text-kpl-gold me-1"></i> Active buyer leads</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <div class="p-3 rounded-3 bg-white border shadow-2xs">
+                                    <span class="text-muted fs-11 fw-bold text-uppercase d-block mb-1">New Unanswered</span>
+                                    <h4 class="fw-extrabold text-warning mb-0" id="liveNewLeadsCount">2 Leads</h4>
+                                    <small class="text-muted fs-11"><i class="fas fa-clock text-warning me-1"></i> Awaiting response</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <div class="p-3 rounded-3 bg-white border shadow-2xs">
+                                    <span class="text-muted fs-11 fw-bold text-uppercase d-block mb-1">In Contact / Follow-Up</span>
+                                    <h4 class="fw-extrabold text-primary mb-0" id="liveContactedCount">2 Active</h4>
+                                    <small class="text-muted fs-11"><i class="fas fa-comments text-primary me-1"></i> In communication</small>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <div class="p-3 rounded-3 bg-white border shadow-2xs">
+                                    <span class="text-muted fs-11 fw-bold text-uppercase d-block mb-1">Fulfilled / Completed</span>
+                                    <h4 class="fw-extrabold text-success mb-0" id="liveFulfilledCount">2 Customers</h4>
+                                    <small class="text-muted fs-11"><i class="fas fa-circle-check text-success me-1"></i> In transit &amp; fulfilled</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filters & Live Search Toolbar -->
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 p-3 rounded-3 bg-light border mb-4">
+                            
+                            <!-- Filter Pills with Complete Dynamic Counts -->
+                            <div class="d-flex flex-wrap align-items-center gap-2" id="enquiryFilterContainer">
+                                <span class="dash-filter-pill active" data-filter="all">All (<span id="filterPillAllCount">6</span>)</span>
+                                <span class="dash-filter-pill" data-filter="new">New (<span id="filterPillNewCount">2</span>)</span>
+                                <span class="dash-filter-pill" data-filter="contacted">Contacted (<span id="filterPillQuotedCount">2</span>)</span>
+                                <span class="dash-filter-pill" data-filter="dispatched">In Delivery (<span id="filterPillDispatchedCount">1</span>)</span>
+                                <span class="dash-filter-pill" data-filter="completed">Completed (<span id="filterPillCompletedCount">1</span>)</span>
+                            </div>
+
+                            <!-- Search Input -->
+                            <div class="dash-search-box" style="width: 320px;">
+                                <i class="fas fa-search"></i>
+                                <input type="text" class="dash-search-input" id="enquirySearchInput" placeholder="Search customer, company, phone, location...">
+                            </div>
+                        </div>
+
+                        <!-- Full Interactive Table (Pure Customer Details - No Quotes) -->
+                        <div class="table-responsive">
+                            <table class="table table-dash align-middle">
+                                <thead>
+                                    <tr>
+                                        <th style="min-width: 160px;">Customer Name</th>
+                                        <th style="min-width: 200px;">Company &amp; Location</th>
+                                        <th style="min-width: 150px;">Contact</th>
+                                        <th style="min-width: 180px;">Email</th>
+                                        <th style="min-width: 230px;">Required Lubricant &amp; Volume</th>
+                                        <th style="min-width: 120px;">Status</th>
+                                        <th style="min-width: 130px;">Date Logged</th>
+                                        <th class="text-end" style="min-width: 130px; white-space: nowrap;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="enquiriesTableBody">
+                                    <!-- Injected dynamically via JS with real-time customer data -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+<!-- ========================================================
+         MODAL 1: ADD NEW CATEGORY (1ST STEP)
+         ======================================================== -->
+    <div class="modal fade dash-modal" id="addCategoryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-kpl-navy mb-0">
+                        <i class="fas fa-folder-plus text-kpl-gold me-2"></i> Create Lubricant Category
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addCategoryForm">
+                    <div class="modal-body p-4">
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark">Category Name *</label>
+                            <input type="text" class="form-control" id="newCatName" placeholder="e.g. Synthetic Turbine & Compressor Oils" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark">Category Icon</label>
+                            <select class="form-select" id="newCatIcon">
+                                <option value="fas fa-oil-can">Oil Can (fas fa-oil-can)</option>
+                                <option value="fas fa-industry">Industrial Factory (fas fa-industry)</option>
+                                <option value="fas fa-car-side">Automotive (fas fa-car-side)</option>
+                                <option value="fas fa-gears">Gear & Transmission (fas fa-gears)</option>
+                                <option value="fas fa-screwdriver-wrench">Grease & Workshop (fas fa-screwdriver-wrench)</option>
+                                <option value="fas fa-bolt">Transformer / Electric (fas fa-bolt)</option>
+                                <option value="fas fa-microchip">CNC Machining (fas fa-microchip)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark">Short Description *</label>
+                            <textarea class="form-control" id="newCatDesc" rows="2" placeholder="Brief summary of lubricant grades and applications in this category..." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark d-flex justify-content-between align-items-center mb-1">
+                                <span>Category Banner Image</span>
+                                <span class="badge bg-light text-muted border fs-11 fw-normal">Optional</span>
+                            </label>
+                            <input type="file" class="form-control form-control-sm mb-1.5" id="newCatImageFile" accept="image/png, image/jpeg, image/webp" title="Choose category banner from device">
+                            <select class="form-select form-select-sm" id="newCatImageSelect">
+                                <option value="assets/images/products/industrial_oil.jpg" selected>Industrial & Machine Tool Lubricants</option>
+                                <option value="assets/images/products/engine_oil.jpg">Automotive Engine Oils</option>
+                                <option value="assets/images/products/hydraulic_oil.jpg">Hydraulic Fluids</option>
+                                <option value="assets/images/products/gear_oil.jpg">Gear Lubricants</option>
+                                <option value="assets/images/products/grease.jpg">Greases & Compounds</option>
+                                <option value="assets/images/products/cutting_oil.jpg">Metalworking Fluids</option>
+                            </select>
+                            <div id="newCatImagePreviewWrap" class="mt-2 text-center d-none">
+                                <img id="newCatImagePreview" src="" alt="Category Preview" class="rounded border p-1" style="max-height: 80px; max-width: 100%; object-fit: contain;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-kpl-navy px-4">
+                            <i class="fas fa-plus me-1"></i> Create Category
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         MODAL 2: ADD NEW PRODUCT (2ND STEP - CHOOSING CATEGORY)
+         ======================================================== -->
+    
+    <!-- ========================================================
+         MODAL 1.5: EDIT CATEGORY MODAL
+         ======================================================== -->
+    <div class="modal fade dash-modal" id="editCategoryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-kpl-navy mb-0">
+                        <i class="fas fa-pen-to-square text-kpl-gold me-2"></i> Edit Lubricant Category
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="editCategoryForm">
+                    <input type="hidden" id="editCatIndex" value="">
+                    <div class="modal-body p-4">
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark">Category Name *</label>
+                            <input type="text" class="form-control" id="editCatName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark">Category Icon</label>
+                            <select class="form-select" id="editCatIcon">
+                                <option value="fas fa-oil-can">Oil Can (fas fa-oil-can)</option>
+                                <option value="fas fa-industry">Industrial Factory (fas fa-industry)</option>
+                                <option value="fas fa-car-side">Automotive (fas fa-car-side)</option>
+                                <option value="fas fa-gears">Gear & Transmission (fas fa-gears)</option>
+                                <option value="fas fa-screwdriver-wrench">Grease & Workshop (fas fa-screwdriver-wrench)</option>
+                                <option value="fas fa-bolt">Transformer / Electric (fas fa-bolt)</option>
+                                <option value="fas fa-microchip">CNC Machining (fas fa-microchip)</option>
+                                <option value="fas fa-ship">Marine / Turbine (fas fa-ship)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark">Short Description *</label>
+                            <textarea class="form-control" id="editCatDesc" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark d-flex justify-content-between align-items-center mb-1">
+                                <span>Category Banner Image</span>
+                                <span class="badge bg-light text-muted border fs-11 fw-normal">Upload or Select</span>
+                            </label>
+                            <input type="file" class="form-control form-control-sm mb-1.5" id="editCatImageFile" accept="image/png, image/jpeg, image/webp" title="Choose new category banner from device">
+                            <select class="form-select form-select-sm" id="editCatImageSelect">
+                                <option value="assets/images/products/industrial_oil.jpg">Industrial & Machine Tool Lubricants</option>
+                                <option value="assets/images/products/engine_oil.jpg">Automotive Engine Oils</option>
+                                <option value="assets/images/products/hydraulic_oil.jpg">Hydraulic Fluids</option>
+                                <option value="assets/images/products/gear_oil.jpg">Gear Lubricants</option>
+                                <option value="assets/images/products/grease.jpg">Greases & Compounds</option>
+                                <option value="assets/images/products/cutting_oil.jpg">Metalworking Fluids</option>
+                            </select>
+                            <div id="editCatImagePreviewWrap" class="mt-2 text-center">
+                                <img id="editCatImagePreview" src="" alt="Category Preview" class="rounded border p-1" style="max-height: 90px; max-width: 100%; object-fit: contain;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-kpl-navy px-4">
+                            <i class="fas fa-check me-1"></i> Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade dash-modal" id="addProductModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-kpl-navy mb-0">
+                        <i class="fas fa-box-open text-kpl-gold me-2"></i> Add Lubricant Product
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addProductForm">
+                    <div class="modal-body p-4">
+                        
+                        <!-- MANDATORY STEP 1: CHOOSE CATEGORY -->
+                        <div class="p-3 mb-3 rounded-3 bg-light border border-warning-subtle">
+                            <label class="form-label fs-13 fw-bold text-dark d-flex align-items-center justify-content-between mb-1">
+                                <span><i class="fas fa-tags text-kpl-gold me-1.5"></i> Choose Assigned Category *</span>
+                                <a href="#categories" class="text-decoration-none fs-11 text-primary fw-semibold" onclick="bootstrap.Modal.getInstance(document.getElementById('addProductModal')).hide(); switchTab('tab-categories');">
+                                    + Add New Category
+                                </a>
+                            </label>
+                            <select class="form-select border-2" id="newProductCategory" required style="border-color: #F5B000 !important;">
+                                <option value="" selected disabled>Select Category first...</option>
+                                <!-- Populated dynamically via JS -->
+                            </select>
+                            <small class="text-muted fs-11 mt-1 d-block">Every product must be assigned under an active category.</small>
+                        </div>
+
+                        <!-- STEP 2: PRODUCT SPECIFICATIONS -->
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label class="form-label fs-13 fw-bold text-dark">Product Name & Viscosity Grade *</label>
+                                <input type="text" class="form-control" id="newProductName" placeholder="e.g. HydroShield ISO VG 68 or 15W-40 CI-4+" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fs-13 fw-bold text-dark">Brand / Supplier *</label>
+                                <select class="form-select" id="newProductBrand" required>
+                                    <option value="" selected disabled>Select Brand...</option>
+                                    <option value="KPL Prime">KPL Prime</option>
+                                    <option value="Castrol">Castrol</option>
+                                    <option value="Mobil">Mobil</option>
+                                    <option value="Shell">Shell</option>
+                                    <option value="Gulf">Gulf</option>
+                                    <option value="Motul">Motul</option>
+                                    <option value="TotalEnergies">TotalEnergies</option>
+                                    <option value="Valvoline">Valvoline</option>
+                                    <option value="Other Multi-Brand">Other Multi-Brand</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Commercial Pack Size *</label>
+                                <select class="form-select" id="newProductPack" required>
+                                    <option value="" selected disabled>Select Pack Size...</option>
+                                    <option value="210L Steel Drum">210 Litre Steel Drum / Barrel</option>
+                                    <option value="55L Steel Drum">55 Litre Medium Drum</option>
+                                    <option value="20L Pail">20 Litre Industrial Pail / Bucket</option>
+                                    <option value="18kg Bucket">18 kg Grease Pail</option>
+                                    <option value="5L Can">5 Litre Automotive Can</option>
+                                    <option value="1L Bottle">1 Litre Retail Bottle</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Selling Price (₹ per Pack / Drum) *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted">₹</span>
+                                    <input type="number" class="form-control" id="newProductPrice" placeholder="e.g. 34200" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Opening Stock Quantity (Units in Depot) *</label>
+                                <input type="number" class="form-control" id="newProductStock" placeholder="e.g. 25" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark d-flex justify-content-between align-items-center mb-1">
+                                    <span>Product Image</span>
+                                    <span class="badge bg-light text-secondary border fs-11 fw-normal">Upload or Select</span>
+                                </label>
+                                <input type="file" class="form-control form-control-sm mb-1.5" id="newProductImageFile" accept="image/png, image/jpeg, image/webp" title="Upload custom photo from device">
+                                <select class="form-select form-select-sm" id="newProductImage">
+                                    <option value="" selected>-- Or select standard product drum --</option>
+                                    <option value="assets/images/products/engine_oil.jpg">Engine Oil Drum (assets/images/products/engine_oil.jpg)</option>
+                                    <option value="assets/images/products/hydraulic_oil.jpg">Hydraulic Oil Drum (assets/images/products/hydraulic_oil.jpg)</option>
+                                    <option value="assets/images/products/gear_oil.jpg">Gear Oil Drum (assets/images/products/gear_oil.jpg)</option>
+                                    <option value="assets/images/products/grease.jpg">Grease Pail (assets/images/products/grease.jpg)</option>
+                                    <option value="assets/images/products/cutting_oil.jpg">Cutting Oil Drum (assets/images/products/cutting_oil.jpg)</option>
+                                    <option value="assets/images/products/industrial_oil.jpg">Specialty Industrial Oil (assets/images/products/industrial_oil.jpg)</option>
+                                </select>
+                                <div id="newProductImagePreviewWrap" class="mt-2 text-center d-none">
+                                    <img id="newProductImagePreview" src="" alt="Live Preview" class="rounded border p-1" style="max-height: 85px; max-width: 100%; object-fit: contain;">
+                                    <div class="text-muted fs-11 mt-0.5">Custom photo selected from device</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-kpl-gold px-4">
+                            <i class="fas fa-check me-1"></i> Save Product under Category
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         MODAL: EDIT ENTIRE PRODUCT DETAILS
+         ======================================================== -->
+    <div class="modal fade dash-modal" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
+                <div class="modal-header border-bottom py-3 px-4">
+                    <div class="d-flex align-items-center gap-2.5">
+                        <div class="rounded-circle bg-warning-subtle text-warning d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="fas fa-box-open fs-5 text-kpl-gold"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title fw-bold text-kpl-navy mb-0" id="editProductModalTitle">Edit Product</h5>
+                            <small class="text-muted fs-12">Update specifications, category assignment, pricing, and stock</small>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="editProductForm">
+                    <input type="hidden" id="editProductId">
+                    <div class="modal-body p-4">
+                        
+                        <!-- Top SKU Info Bar -->
+                        <div class="d-flex align-items-center justify-content-between p-2.5 px-3 rounded-3 bg-light border mb-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-muted fs-12 fw-semibold">Product ID / SKU:</span>
+                                <span class="badge bg-white text-dark border font-monospace fs-12" id="editProductIdBadge">ID</span>
+                            </div>
+                            <div id="editProductStockStatusBadge">
+                                <span class="badge bg-success-subtle text-success rounded-pill fs-11">In Stock</span>
+                            </div>
+                        </div>
+
+                        <!-- CATEGORY SELECTION -->
+                        <div class="p-3 mb-3 rounded-3 bg-light border border-warning-subtle">
+                            <label class="form-label fs-13 fw-bold text-dark mb-1">
+                                <i class="fas fa-tags text-kpl-gold me-1.5"></i> Assigned Category *
+                            </label>
+                            <select class="form-select border-2" id="editProductCategory" required style="border-color: #F5B000 !important;">
+                                <!-- Populated dynamically via JS -->
+                            </select>
+                            <small class="text-muted fs-11 mt-1 d-block">Change category classification if product was re-categorized.</small>
+                        </div>
+
+                        <!-- PRODUCT SPECIFICATIONS -->
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label class="form-label fs-13 fw-bold text-dark">Product Name & Viscosity Grade *</label>
+                                <input type="text" class="form-control" id="editProductName" placeholder="e.g. HydroShield ISO VG 68" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fs-13 fw-bold text-dark">Brand / Supplier *</label>
+                                <select class="form-select" id="editProductBrand" required>
+                                    <option value="KPL Prime">KPL Prime</option>
+                                    <option value="Castrol">Castrol</option>
+                                    <option value="Mobil">Mobil</option>
+                                    <option value="Shell">Shell</option>
+                                    <option value="Gulf">Gulf</option>
+                                    <option value="Motul">Motul</option>
+                                    <option value="TotalEnergies">TotalEnergies</option>
+                                    <option value="Valvoline">Valvoline</option>
+                                    <option value="Other Multi-Brand">Other Multi-Brand</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Commercial Pack Size *</label>
+                                <select class="form-select" id="editProductPack" required>
+                                    <option value="210L Steel Drum">210 Litre Steel Drum / Barrel</option>
+                                    <option value="55L Steel Drum">55 Litre Medium Drum</option>
+                                    <option value="20L Pail">20 Litre Industrial Pail / Bucket</option>
+                                    <option value="18kg Bucket">18 kg Grease Pail</option>
+                                    <option value="5L Can">5 Litre Automotive Can</option>
+                                    <option value="1L Bottle">1 Litre Retail Bottle</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Selling Price (₹ per Pack / Drum) *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted">₹</span>
+                                    <input type="number" class="form-control" id="editProductPrice" min="0" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Depot Stock Quantity (Units in Depot) *</label>
+                                <input type="number" class="form-control font-monospace fw-bold" id="editProductStock" min="0" required>
+                                <small class="text-muted fs-11">Stock &gt; 20 is In Stock; ≤ 20 is Low Stock alert.</small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark d-flex justify-content-between align-items-center mb-1">
+                                    <span>Product Image</span>
+                                    <span class="badge bg-light text-secondary border fs-11 fw-normal">Upload or Select</span>
+                                </label>
+                                <input type="file" class="form-control form-control-sm mb-1.5" id="editProductImageFile" accept="image/png, image/jpeg, image/webp" title="Upload custom photo from device">
+                                <select class="form-select form-select-sm" id="editProductImage">
+                                    <option value="assets/images/products/engine_oil.jpg">Engine Oil Drum (assets/images/products/engine_oil.jpg)</option>
+                                    <option value="assets/images/products/hydraulic_oil.jpg">Hydraulic Oil Drum (assets/images/products/hydraulic_oil.jpg)</option>
+                                    <option value="assets/images/products/gear_oil.jpg">Gear Oil Drum (assets/images/products/gear_oil.jpg)</option>
+                                    <option value="assets/images/products/grease.jpg">Grease Pail (assets/images/products/grease.jpg)</option>
+                                    <option value="assets/images/products/cutting_oil.jpg">Cutting Oil Drum (assets/images/products/cutting_oil.jpg)</option>
+                                    <option value="assets/images/products/industrial_oil.jpg">Specialty Industrial Oil (assets/images/products/industrial_oil.jpg)</option>
+                                </select>
+                                <div id="editProductImagePreviewWrap" class="mt-2 text-center d-none">
+                                    <img id="editProductImagePreview" src="" alt="Live Preview" class="rounded border p-1" style="max-height: 85px; max-width: 100%; object-fit: contain;">
+                                    <div class="text-muted fs-11 mt-0.5">New photo selected from device</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer bg-light px-4 py-3">
+                        <button type="button" class="btn btn-outline-secondary fs-13" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-kpl-gold px-4 fs-13 fw-bold">
+                            <i class="fas fa-check me-1"></i> Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         MODAL 3: UPLOAD GALLERY PHOTO
+         ======================================================== -->
+    <div class="modal fade dash-modal" id="addGalleryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-kpl-navy mb-0">
+                        <i class="fas fa-cloud-arrow-up text-kpl-gold me-2"></i> Upload Gallery Photograph
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addGalleryForm">
+                    <div class="modal-body p-4">
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark">Photograph Title *</label>
+                            <input type="text" class="form-control" id="newPhotoTitle" placeholder="e.g. Bulk Consignment Dispatch to Textile Mills" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark">Album / Tag *</label>
+                            <select class="form-select" id="newPhotoCategory" required>
+                                <option value="depot">Depot & Storage</option>
+                                <option value="products">Product Showcase</option>
+                                <option value="fleet">Fleet Delivery</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark d-flex justify-content-between align-items-center mb-1">
+                                <span>Photograph File / Asset *</span>
+                                <span class="badge bg-light text-secondary border fs-11 fw-normal">Upload from Device or Select</span>
+                            </label>
+                            <input type="file" class="form-control form-control-sm mb-1.5" id="newPhotoFile" accept="image/png, image/jpeg, image/webp" title="Choose photo from phone or computer">
+                            <select class="form-select form-select-sm" id="newPhotoUrl">
+                                <option value="assets/images/gallery/drum_warehouse.jpg">Warehouse Drum Stockyard (assets/images/gallery/drum_warehouse.jpg)</option>
+                                <option value="assets/images/gallery/plant.jpg">Ganapathy Loading Dock (assets/images/gallery/plant.jpg)</option>
+                                <option value="assets/images/gallery/engine_oil_pour.jpg">Engine Oil Pouring Test (assets/images/gallery/engine_oil_pour.jpg)</option>
+                                <option value="assets/images/gallery/bearing_grease.jpg">High-Load Bearing Grease (assets/images/gallery/bearing_grease.jpg)</option>
+                                <option value="assets/images/gallery/cnc_coolant.jpg">CNC Coolant in Action (assets/images/gallery/cnc_coolant.jpg)</option>
+                                <option value="assets/images/gallery/blending_plant.jpg">Consignment Vehicle (assets/images/gallery/blending_plant.jpg)</option>
+                            </select>
+                            <div class="image-preview-zone mt-2">
+                                <i class="fas fa-image fs-3 text-muted"></i>
+                                <div class="text-muted fs-11 mt-1">Live photo preview below:</div>
+                                <img id="photoUploadPreview" src="assets/images/gallery/drum_warehouse.jpg" alt="Preview" style="display:block; max-height:130px; margin:8px auto 0; object-fit: contain;">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fs-13 fw-bold text-dark">Description / Caption</label>
+                            <textarea class="form-control" id="newPhotoDesc" rows="2" placeholder="Brief note on location, event, or consignment..."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-kpl-gold px-4">
+                            <i class="fas fa-upload me-1"></i> Publish Photo
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         MODAL 4: ADD MANUAL ENQUIRY / QUOTATION
+         ======================================================== -->
+    <div class="modal fade dash-modal" id="addLeadModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-kpl-navy mb-0">
+                        <i class="fas fa-user-plus text-kpl-gold me-2"></i> Log Customer Enquiry
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addLeadForm">
+                    <div class="modal-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Customer Name *</label>
+                                <input type="text" class="form-control" id="newLeadName" placeholder="e.g. S. Karthikeyan" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Company / Organization</label>
+                                <input type="text" class="form-control" id="newLeadCompany" placeholder="e.g. Coimbatore Textile Mills Ltd">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Contact Number <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="newLeadPhone" placeholder="e.g. +91 98422 11094" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">WhatsApp Number</label>
+                                <input type="tel" class="form-control" id="newLeadWhatsapp" placeholder="e.g. +91 98422 11094 (Optional)">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Email Address</label>
+                                <input type="email" class="form-control" id="newLeadEmail" placeholder="e.g. purchase@company.in">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">City / Location</label>
+                                <input type="text" class="form-control" id="newLeadLocation" placeholder="e.g. Kurichi SIDCO, Coimbatore">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fs-13 fw-bold text-dark">Required Lubricant Grade *</label>
+                                <input type="text" class="form-control" id="newLeadGrade" placeholder="e.g. HydroShield ISO VG 68" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fs-13 fw-bold text-dark">Pack Size &amp; Volume *</label>
+                                <input type="text" class="form-control" id="newLeadVolume" placeholder="e.g. 5 Steel Drums (1,050 L)" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fs-13 fw-bold text-dark">Customer Requirements &amp; Delivery Notes</label>
+                                <textarea class="form-control" id="newLeadNotes" rows="2" placeholder="e.g. Delivery required with test Certificate of Analysis (COA)..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-kpl-gold px-4">
+                            <i class="fas fa-check me-1"></i> Save Customer Enquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         MODAL 5: ENQUIRY DETAILS INSPECTION CARD
+         ======================================================== -->
+    <div class="modal fade dash-modal" id="leadDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-kpl-navy mb-0">Customer Enquiry Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="leadDetailModalBody">
+                    <!-- Populated dynamically via JS -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         MODAL 6: GALLERY FULLSCREEN LIGHTBOX
+         ======================================================== -->
+    <div class="modal fade" id="galleryLightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden bg-white">
+                <div class="modal-header border-bottom py-2.5 px-3">
+                    <h6 class="modal-title fw-bold text-kpl-navy mb-0" id="lightboxTitle">Photograph Inspection</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0 text-center bg-dark">
+                    <img id="lightboxImg" src="" alt="Full view" class="img-fluid" style="max-height: 520px; object-fit: contain;">
+                </div>
+                <div class="modal-footer py-2.5 px-3 bg-light justify-content-between">
+                    <small class="text-muted fs-12" id="lightboxDesc"></small>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- ========================================================
+         UNIVERSAL ACTION CONFIRMATION MODAL (NEAT & MODERN)
+         ======================================================== -->
+    <div class="modal fade dash-modal" id="dashConfirmModal" tabindex="-1" aria-labelledby="confirmModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 420px;">
+            <div class="modal-content text-center p-3 border-0 shadow-lg" style="border-radius: 16px;">
+                <div class="modal-body p-3">
+                    <div class="mx-auto rounded-circle bg-danger-subtle text-danger d-flex align-items-center justify-content-center mb-3" style="width: 58px; height: 58px;" id="confirmModalIconWrap">
+                        <i class="fas fa-trash-alt fs-3" id="confirmModalIcon"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2" id="confirmModalTitle">Are you sure?</h5>
+                    <p class="text-muted fs-13 mb-3.5 pb-1" id="confirmModalMessage" style="line-height: 1.5;">
+                        This action cannot be undone.
+                    </p>
+                    <div class="d-flex align-items-center justify-content-center gap-2">
+                        <button type="button" class="btn btn-light border py-2 px-3 fs-13 fw-semibold text-secondary rounded-3 flex-grow-1" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-danger py-2 px-3 fs-13 fw-bold rounded-3 shadow-sm flex-grow-1" id="confirmModalActionBtn">
+                            Yes, Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================
+         BACK TO PUBLIC SITE REMINDER NOTIFICATION MODAL
+         ======================================================== -->
+    <div class="modal fade dash-modal" id="backToSiteModal" tabindex="-1" aria-labelledby="backToSiteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 420px;">
+            <div class="modal-content text-center p-3 border-0 shadow-xl" style="border-radius: 16px;">
+                <div class="modal-body p-3">
+                    <div class="mx-auto rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 62px; height: 62px; background: rgba(245, 176, 0, 0.16); color: #D97706; box-shadow: 0 0 0 6px rgba(245, 176, 0, 0.08);">
+                        <i class="fas fa-bell fs-2 animate-bounce"></i>
+                    </div>
+                    <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle rounded-pill px-3 py-1 fs-11 fw-bold text-uppercase tracking-wider mb-2">
+                        <i class="fas fa-circle-exclamation me-1"></i> Reminder Notification
+                    </span>
+                    <h5 class="fw-bold text-dark mt-2 mb-1" id="backToSiteModalLabel">Return to Public Website?</h5>
+                    <p class="text-muted fs-13 mb-3 pb-1">
+                        You are about to leave the <strong>Seller Operations Dashboard</strong> and return to the main public website. Any unsaved edits or pending entries will be discarded.
+                    </p>
+                    <div class="d-flex flex-column gap-2">
+                        <a href="index.php" class="btn btn-kpl-navy py-2 fs-13 fw-bold rounded-3 shadow-sm d-flex align-items-center justify-content-center gap-2 text-white" id="confirmProceedToSite">
+                            <i class="fas fa-arrow-left text-kpl-gold"></i> Yes, Proceed to Website
+                        </a>
+                        <button type="button" class="btn btn-light border py-2 fs-13 fw-semibold text-secondary rounded-3" data-bs-dismiss="modal" id="cancelProceedToSite">
+                            Stay on Dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- KPL Seller Operations Suite JS -->
+    <script src="assets/js/dashboard.js?v=3.8"></script>
+
+</body>
+</html>

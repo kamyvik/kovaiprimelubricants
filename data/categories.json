@@ -1,0 +1,58 @@
+[
+    {
+        "id": "cat-auto",
+        "name": "Automotive Engine Oils",
+        "icon": "fas fa-car-side",
+        "slug": "automotive",
+        "desc": "Heavy-duty 15W-40, 20W-50, semi-synthetic & full-synthetic formulations for commercial fleets and passenger cars.",
+        "image": "assets/images/products/engine_oil.jpg"
+    },
+    {
+        "id": "cat-hydro",
+        "name": "Industrial Hydraulic Oils",
+        "icon": "fas fa-industry",
+        "slug": "hydraulic",
+        "desc": "Anti-wear hydraulic fluids ISO VG 32, 46, 68 for CNC machine tools, injection moulding, and heavy presses.",
+        "image": "assets/images/products/hydraulic_oil.jpg"
+    },
+    {
+        "id": "cat-gear",
+        "name": "Gear & Transmission Fluids",
+        "icon": "fas fa-gears",
+        "slug": "gear",
+        "desc": "Extreme-pressure 80W-90, 85W-140 EP differential, gearbox, and industrial transmission lubricants.",
+        "image": "assets/images/products/gear_oil.jpg"
+    },
+    {
+        "id": "cat-grease",
+        "name": "High-Temperature Greases",
+        "icon": "fas fa-screwdriver-wrench",
+        "slug": "grease",
+        "desc": "Premium Lithium AP-3, red gel chassis, and heavy load wheel bearing greases with high drop points.",
+        "image": "assets/images/products/grease.jpg"
+    },
+    {
+        "id": "cat-coolant",
+        "name": "Metalworking & Cutting Fluids",
+        "icon": "fas fa-microchip",
+        "slug": "metalworking",
+        "desc": "Water-soluble cutting oils, CNC tool coolants, grinding fluids, and precision machine slideway oils.",
+        "image": "assets/images/products/cutting_oil.jpg"
+    },
+    {
+        "id": "cat-specialty",
+        "name": "Transformer & Specialty Oils",
+        "icon": "fas fa-bolt",
+        "slug": "specialty",
+        "desc": "High dielectric transformer insulation oils, white mineral oils, and rubber process lubricants.",
+        "image": "assets/images/products/industrial_oil.jpg"
+    },
+    {
+        "id": "cat-marine",
+        "name": "Synthetic Marine & Turbine Oils",
+        "icon": "fas fa-ship",
+        "slug": "marine-turbine",
+        "desc": "Heavy-duty synthetic gas turbine & marine generator circulating lubricants ISO VG 32, 46, 68.",
+        "image": "assets/images/products/industrial_oil.jpg"
+    }
+]

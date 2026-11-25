@@ -1,0 +1,2247 @@
+/* ==========================================================================
+   KOVAI PRIME LUBRICANTS (KPL) - CUSTOM BRAND STYLESHEET
+   Brand Colors: Navy Blue (#0D205E), Amber Gold (#F5B000), Orange (#FF7A00)
+   ========================================================================== */
+
+:root {
+    --kpl-navy: #0D205E;
+    --kpl-navy-dark: #071230;
+    --kpl-navy-light: #162E7B;
+    --kpl-gold: #F5B000;
+    --kpl-gold-hover: #E0A000;
+    --kpl-orange: #FF7A00;
+    --kpl-light-bg: #F8FAFC;
+    --kpl-card-border: #E2E8F0;
+    --kpl-text-main: #1E293B;
+    --kpl-text-muted: #64748B;
+    --kpl-shadow: 0 10px 30px rgba(13, 32, 94, 0.08);
+    --kpl-shadow-hover: 0 15px 35px rgba(13, 32, 94, 0.16);
+    --kpl-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+    background-color: #040B1E;
+    overflow-x: clip;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: var(--kpl-text-main);
+    background-color: #040B1E;
+    overflow-x: clip;
+    margin: 0;
+    padding: 0;
+}
+
+/* Typography Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--kpl-navy);
+}
+
+/* Color Helper Classes */
+.text-kpl-navy { color: var(--kpl-navy) !important; }
+.text-kpl-gold { color: var(--kpl-gold) !important; }
+.text-kpl-orange { color: var(--kpl-orange) !important; }
+.bg-kpl-navy { background-color: var(--kpl-navy) !important; }
+.bg-kpl-navy-dark { background-color: var(--kpl-navy-dark) !important; }
+.bg-kpl-gold { background-color: var(--kpl-gold) !important; color: #0D205E !important; }
+.bg-kpl-light { background-color: var(--kpl-light-bg) !important; }
+
+/* ==========================================================================
+   SITE-WIDE GLASSMORPHISM (GLASSY FINISH) BUTTON SYSTEM
+   ========================================================================== */
+
+/* Universal Glass Base for all buttons */
+.btn,
+.btn-kpl-gold,
+.btn-kpl-primary,
+.btn-kpl-outline,
+.btn-outline-light,
+.btn-header-quick-enquiry,
+.product-filter-btn,
+button[type="submit"] {
+    position: relative;
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Glassy top-edge reflection for buttons */
+.btn::before,
+.btn-kpl-gold::before,
+.btn-kpl-primary::before,
+.btn-kpl-outline::before,
+.btn-outline-light::before,
+.btn-header-quick-enquiry::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.04) 100%);
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 1. Amber/Gold Glass Button */
+.btn-kpl-gold {
+    background: linear-gradient(180deg, rgba(255, 213, 79, 0.95) 0%, rgba(245, 176, 0, 0.9) 45%, rgba(255, 122, 0, 0.95) 100%) !important;
+    color: #071230 !important;
+    border: 1px solid rgba(255, 255, 255, 0.65) !important;
+    box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.8),
+                inset 0 -1.5px 2px rgba(180, 80, 0, 0.4),
+                0 8px 24px rgba(245, 176, 0, 0.35) !important;
+    font-weight: 700 !important;
+    padding: 0.7rem 1.8rem;
+}
+.btn-kpl-gold:hover {
+    background: linear-gradient(180deg, rgba(255, 230, 130, 0.98) 0%, rgba(255, 185, 15, 0.95) 45%, rgba(255, 138, 20, 0.98) 100%) !important;
+    color: #071230 !important;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.95),
+                inset 0 -1.5px 2px rgba(180, 80, 0, 0.5),
+                0 14px 30px rgba(245, 176, 0, 0.5) !important;
+}
+
+/* 2. Navy Glass Button */
+.btn-kpl-primary {
+    background: linear-gradient(180deg, rgba(30, 58, 138, 0.88) 0%, rgba(13, 32, 94, 0.92) 50%, rgba(7, 18, 48, 0.96) 100%) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.32) !important;
+    box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.45),
+                inset 0 -1.5px 2px rgba(0, 0, 0, 0.5),
+                0 8px 22px rgba(13, 32, 94, 0.35) !important;
+    padding: 0.65rem 1.6rem;
+}
+.btn-kpl-primary:hover {
+    background: linear-gradient(180deg, rgba(37, 72, 172, 0.92) 0%, rgba(18, 44, 130, 0.96) 50%, rgba(10, 25, 68, 0.98) 100%) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.6),
+                inset 0 -1.5px 2px rgba(0, 0, 0, 0.6),
+                0 14px 28px rgba(13, 32, 94, 0.45) !important;
+}
+
+/* 3. Frosted Clear/Outline Glass Button */
+.btn-kpl-outline {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(241, 245, 249, 0.45) 100%) !important;
+    color: var(--kpl-navy) !important;
+    border: 1px solid rgba(13, 32, 94, 0.3) !important;
+    box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.9),
+                inset 0 -1px 1px rgba(13, 32, 94, 0.1),
+                0 6px 18px rgba(13, 32, 94, 0.08) !important;
+    padding: 0.65rem 1.6rem;
+}
+.btn-kpl-outline:hover {
+    background: linear-gradient(180deg, rgba(13, 32, 94, 0.95) 0%, rgba(7, 18, 48, 0.98) 100%) !important;
+    color: #FFFFFF !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.45),
+                0 12px 26px rgba(13, 32, 94, 0.3) !important;
+}
+
+/* 4. White/Light Crystal Glass Button (for dark sections) */
+.btn-outline-light {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: inset 0 1.5px 1.5px rgba(255, 255, 255, 0.65),
+                inset 0 -1px 1px rgba(0, 0, 0, 0.25),
+                0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    padding: 0.7rem 1.8rem;
+}
+.btn-outline-light:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.18) 100%) !important;
+    color: #FFFFFF !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.85),
+                0 12px 28px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 5. Emerald Green Glass Button (WhatsApp & Chat) */
+.btn-success,
+.footer-top-cta .btn-success {
+    background: linear-gradient(180deg, rgba(52, 211, 153, 0.95) 0%, rgba(37, 211, 102, 0.9) 45%, rgba(18, 140, 126, 0.95) 100%) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.75),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.25),
+                0 8px 24px rgba(37, 211, 102, 0.35) !important;
+}
+.btn-success:hover,
+.footer-top-cta .btn-success:hover {
+    background: linear-gradient(180deg, rgba(74, 222, 168, 0.98) 0%, rgba(45, 220, 115, 0.95) 45%, rgba(22, 160, 144, 0.98) 100%) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.9),
+                0 12px 28px rgba(37, 211, 102, 0.5) !important;
+}
+
+/* 6. Small Card Glass Buttons (Details & Enquire) */
+.btn-sm {
+    padding: 0.45rem 1.15rem !important;
+    font-size: 0.85rem !important;
+    border-radius: 8px !important;
+}
+
+/* Top Header Bar */
+.top-header {
+    background-color: var(--kpl-navy-dark);
+    color: #CBD5E1;
+    font-size: 0.875rem;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.top-header a {
+    color: #CBD5E1;
+    text-decoration: none;
+    transition: var(--kpl-transition);
+}
+.top-header a:hover {
+    color: var(--kpl-gold);
+}
+
+/* Navbar */
+.navbar-kpl {
+    background-color: #FFFFFF;
+    padding: 12px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: var(--kpl-transition);
+    sticky-top: 0;
+}
+.navbar-kpl.sticky-active {
+    padding: 8px 0;
+    box-shadow: 0 6px 25px rgba(13, 32, 94, 0.12);
+}
+.navbar-brand-logo {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--kpl-transition);
+}
+.nav-link-kpl {
+    color: var(--kpl-navy);
+    font-weight: 600;
+    font-size: 0.98rem;
+    padding: 8px 16px !important;
+    position: relative;
+    transition: var(--kpl-transition);
+}
+.nav-link-kpl:hover, .nav-link-kpl.active {
+    color: var(--kpl-gold) !important;
+}
+.nav-link-kpl.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 16px;
+    right: 16px;
+    height: 3px;
+    background-color: var(--kpl-gold);
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background: linear-gradient(90deg, rgba(7, 18, 48, 0.92) 0%, rgba(13, 32, 94, 0.8) 50%, rgba(7, 18, 48, 0.5) 100%),
+                url('../images/hero_banner.jpg') center center / cover no-repeat;
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    padding: 80px 0;
+}
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 176, 0, 0.15);
+    border: 1px solid var(--kpl-gold);
+    color: var(--kpl-gold);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 6px 16px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: #FFFFFF;
+    border: 1px solid var(--kpl-card-border);
+    border-radius: 12px;
+    padding: 30px 24px;
+    transition: var(--kpl-transition);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--kpl-gold);
+    opacity: 0;
+    transition: var(--kpl-transition);
+}
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--kpl-shadow-hover);
+    border-color: transparent;
+}
+.feature-card:hover::before {
+    opacity: 1;
+}
+.feature-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(13, 32, 94, 0.08) 0%, rgba(245, 176, 0, 0.15) 100%);
+    color: var(--kpl-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    transition: var(--kpl-transition);
+}
+.feature-card:hover .feature-icon-box {
+    background: var(--kpl-navy);
+    color: var(--kpl-gold);
+}
+
+/* Product Cards (Attractive 3D Showroom Finish) */
+.product-card {
+    background: #FFFFFF;
+    border: 1px solid var(--kpl-card-border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 18px rgba(13, 32, 94, 0.04);
+}
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 42px rgba(13, 32, 94, 0.12);
+    border-color: rgba(245, 176, 0, 0.45);
+}
+.product-img-wrapper {
+    position: relative;
+    background: radial-gradient(circle at 50% 60%, rgba(245, 176, 0, 0.08) 0%, rgba(248, 250, 252, 1) 70%);
+    padding: 22px 18px 24px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.product-img-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 20%;
+    right: 20%;
+    height: 14px;
+    background: radial-gradient(ellipse at center, rgba(13, 32, 94, 0.22) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.product-card:hover .product-img-wrapper::after {
+    transform: scale(1.15);
+    opacity: 0.85;
+}
+.product-img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    object-fit: contain !important;
+    filter: drop-shadow(0 12px 20px rgba(13, 32, 94, 0.16));
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 2;
+    position: relative;
+}
+.product-card:hover .product-img {
+    transform: scale(1.08) translateY(-4px);
+}
+
+/* Category Card Image Box (Ensures complete product image fits without cropping) */
+.category-img-box {
+    background: linear-gradient(135deg, #F8FAFC 0%, #EEF2F6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 280px;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+.category-img-box img {
+    max-height: 230px;
+    width: auto;
+    max-width: 90%;
+    object-fit: contain !important;
+    filter: drop-shadow(0 14px 24px rgba(13, 32, 94, 0.16));
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.card:hover .category-img-box img {
+    transform: scale(1.08) translateY(-4px);
+}
+
+@media (max-width: 575.98px) {
+    .category-img-box {
+        min-height: 220px;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .category-img-box img {
+        max-height: 180px;
+    }
+}
+
+/* Category Panoramic Visual Showcase Card */
+.category-card-hover {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(13, 32, 94, 0.08) !important;
+}
+.category-card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 48px rgba(13, 32, 94, 0.14) !important;
+    border-color: rgba(245, 176, 0, 0.45) !important;
+}
+.category-banner-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #F8FAFC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.category-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    transition: transform 0.5s ease;
+}
+.category-card-hover:hover .category-banner-img {
+    transform: scale(1.04);
+}
+
+.product-category-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--kpl-navy);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+/* Product Badges in Card Body (Prevents Any Image Overlapping) */
+.product-category-badge {
+    display: inline-block;
+    background: rgba(13, 32, 94, 0.08);
+    color: var(--kpl-navy);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.product-grade-badge {
+    display: inline-block;
+    background: #FFF3CD;
+    color: #856404;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(245, 176, 0, 0.35);
+}
+.product-body {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.product-title {
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--kpl-navy);
+    line-height: 1.35;
+    min-height: 2.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.product-desc {
+    font-size: 0.9rem;
+    color: var(--kpl-text-muted);
+    margin-bottom: 16px;
+    line-height: 1.45;
+    min-height: 2.65rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.product-specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-size: 0.825rem;
+    color: #475569;
+    min-height: 52px;
+}
+.product-specs-list li {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.product-specs-list li i {
+    color: var(--kpl-gold);
+}
+.product-footer {
+    margin-top: auto !important;
+    display: flex;
+    gap: 10px;
+}
+.product-body > .btn,
+.product-body > button {
+    margin-top: auto !important;
+}
+
+/* Home Page Category Showcase Cards (Clean, Modern, Zero Overlap) */
+.home-cat-card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid rgba(13, 32, 94, 0.08);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 20px rgba(13, 32, 94, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.home-cat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 42px rgba(13, 32, 94, 0.12);
+    border-color: rgba(245, 176, 0, 0.45);
+}
+.home-cat-img-box {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    background: linear-gradient(135deg, #F8FAFC 0%, #EEF2F6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.home-cat-img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    object-fit: contain !important;
+    filter: drop-shadow(0 10px 18px rgba(13, 32, 94, 0.12));
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.home-cat-card:hover .home-cat-img {
+    transform: scale(1.08) translateY(-4px);
+}
+.home-cat-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.home-cat-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--kpl-navy);
+    margin-bottom: 8px;
+}
+.home-cat-desc {
+    font-size: 0.875rem;
+    color: var(--kpl-text-muted);
+    margin-bottom: 16px;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Category Cards (Legacy) */
+.category-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 280px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--kpl-shadow);
+    transition: var(--kpl-transition);
+}
+.category-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 32, 94, 0.2) 0%, rgba(7, 18, 48, 0.9) 100%);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #FFFFFF;
+    transition: var(--kpl-transition);
+}
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--kpl-shadow-hover);
+}
+.category-card:hover .category-card-overlay {
+    background: linear-gradient(180deg, rgba(13, 32, 94, 0.4) 0%, rgba(7, 18, 48, 0.95) 100%);
+}
+
+/* Floating WhatsApp Button (Circular Icon Only) */
+.floating-whatsapp-btn,
+.floating-enquiry-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1040;
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #FFFFFF;
+    text-decoration: none !important;
+    transition: var(--kpl-transition);
+}
+.floating-whatsapp-btn:hover,
+.floating-enquiry-btn:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.65);
+    color: #FFFFFF !important;
+}
+.floating-whatsapp-btn i,
+.floating-enquiry-btn i {
+    font-size: 26px;
+}
+.floating-whatsapp-btn span,
+.floating-enquiry-btn span {
+    display: none !important;
+}
+
+
+/* Stat Counter Counter Box */
+.stat-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--kpl-gold);
+}
+
+/* Executive Segmented Filter Dock for Product & Gallery Catalogs */
+.product-filter-dock-container,
+.gallery-filter-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 0;
+}
+.product-filter-dock-container::-webkit-scrollbar,
+.gallery-filter-container::-webkit-scrollbar {
+    display: none;
+}
+
+.product-filter-dock,
+.gallery-filter-ribbon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #F1F4F9;
+    border: 1px solid rgba(13, 32, 94, 0.1);
+    padding: 6px 8px;
+    border-radius: 60px;
+    gap: 4px;
+    max-width: 100%;
+    box-shadow: 0 2px 10px rgba(13, 32, 94, 0.04);
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.product-filter-chip,
+.gallery-filter-chip {
+    padding: 8px 16px;
+    border-radius: 40px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--kpl-navy);
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+    outline: none;
+}
+
+.product-filter-chip:hover,
+.gallery-filter-chip:hover {
+    background: #FFFFFF;
+    color: var(--kpl-navy-dark);
+    border-color: rgba(13, 32, 94, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.product-filter-chip.active,
+.gallery-filter-chip.active {
+    background: linear-gradient(135deg, var(--kpl-navy-dark) 0%, var(--kpl-navy) 100%) !important;
+    color: #FFFFFF !important;
+    border-color: var(--kpl-navy) !important;
+    box-shadow: 0 4px 14px rgba(13, 32, 94, 0.22);
+}
+
+.product-filter-chip .chip-count,
+.gallery-filter-chip .chip-count {
+    font-size: 0.72rem;
+    padding: 2px 7px;
+    border-radius: 20px;
+    background: rgba(13, 32, 94, 0.08);
+    color: var(--kpl-navy);
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.product-filter-chip.active .chip-count,
+.gallery-filter-chip.active .chip-count {
+    background: var(--kpl-gold) !important;
+    color: #111827 !important;
+}
+
+/* Centered Product Search Capsule */
+.product-search-capsule {
+    position: relative;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(13, 32, 94, 0.06);
+}
+.product-search-capsule .form-control {
+    border-radius: 50px;
+    padding: 9px 20px 9px 42px;
+    font-size: 0.88rem;
+    border: 1px solid rgba(13, 32, 94, 0.14);
+    background: #F8FAFC;
+    transition: all 0.25s ease;
+}
+.product-search-capsule .form-control:focus {
+    border-color: var(--kpl-gold);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(245, 176, 0, 0.18);
+}
+
+@media (max-width: 991px) {
+    .product-filter-dock-container,
+    .gallery-filter-container {
+        justify-content: flex-start;
+        padding-bottom: 8px;
+    }
+}
+
+/* Gallery Showcase Card */
+.gallery-item-col {
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.gallery-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #09132E;
+    height: 290px;
+    box-shadow: 0 8px 24px rgba(13, 32, 94, 0.1);
+    cursor: pointer;
+    border: 1px solid rgba(13, 32, 94, 0.08);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(13, 32, 94, 0.2);
+    border-color: rgba(245, 166, 35, 0.5);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    display: block;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+}
+
+/* Floating Category Tag Badge */
+.gallery-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    background: rgba(13, 32, 94, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #FFFFFF;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 5px 12px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Permanent Bottom Vignette Title */
+.gallery-caption-preview {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 18px 14px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(9, 19, 46, 0.78) 50%, rgba(9, 19, 46, 0.96) 100%);
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.gallery-caption-preview h6 {
+    color: #FFFFFF;
+    font-size: 0.96rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.gallery-caption-preview span {
+    color: var(--kpl-gold);
+    font-size: 0.78rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Interactive Hover Full Reveal Overlay */
+.gallery-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(13, 32, 94, 0.90) 0%, rgba(8, 20, 60, 0.94) 100%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 3;
+}
+
+.gallery-card:hover .gallery-hover-overlay {
+    opacity: 1;
+}
+
+.gallery-zoom-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--kpl-gold);
+    color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 18px rgba(245, 166, 35, 0.4);
+    transform: scale(0.8);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gallery-card:hover .gallery-zoom-circle {
+    transform: scale(1);
+}
+
+.gallery-hover-title {
+    color: #FFFFFF;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.35;
+}
+
+.gallery-hover-desc {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin-bottom: 12px;
+    max-width: 90%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.gallery-hover-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--kpl-gold);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(245, 166, 35, 0.3);
+}
+
+/* Lightbox Modal Upgrade */
+.modal:not(.show) {
+    display: none !important;
+}
+
+#lightboxModal .modal-content {
+    background: rgba(13, 32, 94, 0.95) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 16px;
+}
+
+#lightboxModal #lightboxImage {
+    max-height: 72vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+#lightboxModal #lightboxCaption {
+    font-size: 1.05rem;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+#lightboxModal #lightboxDesc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 650px;
+    margin: 6px auto 0;
+    line-height: 1.5;
+}
+
+/* Page Banner (Inner Pages) */
+.page-banner {
+    background: linear-gradient(135deg, var(--kpl-navy-dark) 0%, var(--kpl-navy) 100%);
+    padding: 60px 0;
+    color: #FFFFFF;
+    position: relative;
+    border-bottom: 4px solid var(--kpl-gold);
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255,255,255,0.4);
+}
+.breadcrumb-item a {
+    color: var(--kpl-gold);
+    text-decoration: none;
+}
+
+/* Contact Info Box */
+.contact-info-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--kpl-shadow);
+    border: 1px solid var(--kpl-card-border);
+    height: 100%;
+}
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: rgba(13, 32, 94, 0.08);
+    color: var(--kpl-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+/* Unique Executive Direct Contact Directory */
+.person-contact-item {
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0 !important;
+}
+.person-contact-item:hover {
+    transform: translateY(-2px);
+    background: #FFFFFF !important;
+    box-shadow: 0 6px 16px rgba(13, 32, 94, 0.08);
+    border-color: rgba(245, 176, 0, 0.5) !important;
+}
+.person-avatar-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-right: 14px;
+}
+.bg-gold-subtle {
+    background-color: rgba(245, 176, 0, 0.15) !important;
+    color: #996E00 !important;
+}
+.bg-primary-subtle {
+    background-color: rgba(13, 32, 94, 0.1) !important;
+    color: #0D205E !important;
+}
+.bg-warning-subtle {
+    background-color: rgba(255, 122, 0, 0.12) !important;
+    color: #D96200 !important;
+}
+.bg-info-subtle {
+    background-color: rgba(14, 165, 233, 0.12) !important;
+    color: #0284C7 !important;
+}
+.btn-contact-action {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #E2E8F0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-size: 12px;
+}
+.btn-contact-action.call {
+    color: #0D205E;
+}
+.btn-contact-action.call:hover {
+    background: #0D205E;
+    color: #FFFFFF !important;
+    border-color: #0D205E;
+    transform: scale(1.08);
+}
+.btn-contact-action.wa {
+    color: #25D366;
+}
+.btn-contact-action.wa:hover {
+    background: #25D366;
+    color: #FFFFFF !important;
+    border-color: #25D366;
+    transform: scale(1.08);
+}
+.btn-contact-action.mail {
+    color: #0D205E;
+}
+.btn-contact-action.mail:hover {
+    background: #0D205E;
+    color: #FFFFFF !important;
+    border-color: #0D205E;
+    transform: scale(1.08);
+}
+/* Sleek Corporate WhatsApp Desk Banner */
+.whatsapp-corporate-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+    color: #FFFFFF !important;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    margin-top: 12px;
+}
+.whatsapp-corporate-bar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.38) !important;
+    filter: brightness(1.03);
+    color: #FFFFFF !important;
+}
+.wa-bar-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: #FFFFFF;
+}
+.wa-bar-text {
+    line-height: 1.25;
+}
+.wa-bar-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    opacity: 0.92;
+    white-space: nowrap;
+}
+.wa-bar-number {
+    font-size: 15px;
+    font-weight: 800;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+.wa-bar-action {
+    background: #FFFFFF;
+    color: #128C7E !important;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+.whatsapp-corporate-bar:hover .wa-bar-action {
+    background: #FFFFFF;
+    color: #075E54 !important;
+    transform: scale(1.04);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 9px;
+}
+::-webkit-scrollbar-track {
+    background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--kpl-navy);
+}
+
+/* Responsiveness */
+@media (max-width: 991.98px) {
+    .hero-section {
+        min-height: auto;
+        padding: 60px 0;
+    }
+    .navbar-brand-logo {
+        height: 50px;
+    }
+    .floating-whatsapp-btn span,
+    .floating-enquiry-btn span {
+        display: none;
+    }
+    .floating-whatsapp-btn,
+    .floating-enquiry-btn {
+        padding: 8px 10px;
+        border-radius: 50%;
+    }
+}
+
+/* Custom Header Styling from Screenshot */
+.brand-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.brand-title {
+    color: #0D205E;
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+.brand-subtitle {
+    color: #F5B000;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+.nav-link-custom {
+    color: #334155 !important;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 16px !important;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+    text-decoration: none !important;
+}
+.nav-link-custom:hover {
+    color: #0D205E !important;
+    background-color: #F8FAFC;
+}
+.nav-link-custom.active {
+    background-color: #F1F5F9 !important;
+    color: #0D205E !important;
+    font-weight: 700;
+    position: relative;
+}
+.nav-link-custom.active::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 20%;
+    right: 20%;
+    height: 3px;
+    background-color: #F5B000;
+    border-radius: 2px;
+}
+.btn-header-quick-enquiry {
+    background: linear-gradient(180deg, rgba(30, 58, 138, 0.9) 0%, rgba(13, 32, 94, 0.95) 100%) !important;
+    color: #FFFFFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 30px !important;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 9px 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.45),
+                0 6px 18px rgba(13, 32, 94, 0.3) !important;
+    text-decoration: none !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.btn-header-quick-enquiry:hover {
+    background: linear-gradient(180deg, rgba(37, 72, 172, 0.95) 0%, rgba(18, 44, 130, 0.98) 100%) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.65),
+                0 10px 24px rgba(13, 32, 94, 0.45) !important;
+}
+.btn-header-quick-enquiry i {
+    color: #F5B000 !important;
+    font-size: 18px;
+}
+
+/* Responsive adjustments for navbar to prevent overflow on 992px - 1200px screens */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .nav-link-custom {
+        padding: 6px 9px !important;
+        font-size: 13.5px !important;
+        gap: 4px !important;
+    }
+    .brand-title {
+        font-size: 1rem !important;
+    }
+    .brand-subtitle {
+        font-size: 0.65rem !important;
+        letter-spacing: 1.5px !important;
+    }
+    .btn-header-quick-enquiry {
+        padding: 7px 14px !important;
+        font-size: 13px !important;
+        gap: 6px !important;
+    }
+}
+
+/* Attractive Modern Footer Styling */
+.footer-kpl {
+    background: linear-gradient(180deg, #0A173A 0%, #040B1E 100%);
+    color: #E2E8F0;
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid var(--kpl-gold);
+    margin-bottom: 0 !important;
+}
+
+.footer-top-cta {
+    background: linear-gradient(135deg, rgba(13, 32, 94, 0.9) 0%, rgba(7, 18, 48, 0.95) 100%);
+    border: 1px solid rgba(245, 176, 0, 0.3);
+    border-radius: 18px;
+    padding: 26px 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.footer-heading {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.15rem;
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--kpl-gold) 0%, var(--kpl-orange) 100%);
+    border-radius: 2px;
+}
+
+.footer-link {
+    color: #94A3B8;
+    text-decoration: none !important;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14.5px;
+}
+.footer-link:hover {
+    color: var(--kpl-gold) !important;
+    transform: translateX(5px);
+}
+
+.footer-social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+    font-size: 15px;
+}
+.footer-social-icon:hover {
+    background: var(--kpl-gold);
+    color: var(--kpl-navy-dark) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(245, 176, 0, 0.4);
+}
+
+.contact-item-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+.contact-icon-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(245, 176, 0, 0.15);
+    color: var(--kpl-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   INTERACTIVE ANIMATIONS & CLIENT-ATTRACTING VISUAL ADD-ONS
+   (100% Pure Native CSS - Zero External CDN Dependencies, Instant Loading)
+   ========================================================================== */
+
+/* Guaranteed Visibility Fallback - Never allow elements to be hidden */
+[data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+/* 1. Gradient Gold Text */
+.text-gradient-gold {
+    background: linear-gradient(135deg, #FFE082 0%, #F5B000 45%, #FF7A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Glassy Shiny Silver Font */
+.text-glassy-silver,
+.text-silver-shine,
+h2.text-glassy-silver {
+    display: inline-block !important;
+    color: #FFFFFF !important;
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 0%,
+        #F1F5F9 15%,
+        #CBD5E1 30%,
+        #FFFFFF 48%,
+        #94A3B8 65%,
+        #E2E8F0 82%,
+        #FFFFFF 100%
+    ) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.3px !important;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 2px 10px rgba(203, 213, 225, 0.5))
+            drop-shadow(0 4px 18px rgba(0, 0, 0, 0.8)) !important;
+    animation: silverGlassShine 6s ease-in-out infinite !important;
+    position: relative !important;
+}
+
+@keyframes silverGlassShine {
+    0%, 20% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.85))
+                drop-shadow(0 2px 8px rgba(203, 213, 225, 0.4))
+                drop-shadow(0 4px 16px rgba(0, 0, 0, 0.7));
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1))
+                drop-shadow(0 3px 14px rgba(255, 255, 255, 0.65))
+                drop-shadow(0 5px 22px rgba(0, 0, 0, 0.8));
+    }
+    80%, 100% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.85))
+                drop-shadow(0 2px 8px rgba(203, 213, 225, 0.4))
+                drop-shadow(0 4px 16px rgba(0, 0, 0, 0.7));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .text-glassy-silver,
+    .text-silver-shine {
+        animation: none;
+        background-position: 50% 50%;
+    }
+}
+
+/* 2. Keyframes for Floating & Pulsing */
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes floatReverse {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.45;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes pulseDot {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 176, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(245, 176, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 176, 0, 0);
+    }
+}
+
+@keyframes pulseRadar {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes btnShine {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        left: 200%;
+        opacity: 0;
+    }
+}
+
+/* 3. Hero Animated Showcase */
+.hero-showcase {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 420px;
+}
+
+.hero-glow-ring {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 176, 0, 0.3) 0%, rgba(255, 122, 0, 0.12) 50%, transparent 70%);
+    animation: pulseGlow 4s ease-in-out infinite;
+    z-index: 1;
+}
+
+.hero-floating-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 28px;
+    padding: 30px 40px;
+    animation: floatSlow 5s ease-in-out infinite;
+    box-shadow: 0 25px 60px rgba(7, 18, 48, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    transition: transform 0.4s ease;
+}
+
+.hero-floating-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.hero-bottle-img {
+    max-height: 320px;
+    max-width: 90%;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.5));
+    transition: transform 0.4s ease;
+}
+
+.hero-floating-card:hover .hero-bottle-img {
+    transform: scale(1.05);
+}
+
+.hero-floating-badge {
+    position: absolute;
+    z-index: 4;
+    background: rgba(7, 18, 48, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(245, 176, 0, 0.4);
+    color: #FFFFFF;
+    padding: 9px 18px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.hero-badge-1 {
+    top: 30px;
+    right: -20px;
+    animation: floatReverse 4.5s ease-in-out infinite;
+}
+
+.hero-badge-2 {
+    bottom: 25px;
+    left: -25px;
+    animation: floatSlow 4.8s ease-in-out infinite 0.5s;
+}
+
+.hero-badge-3 {
+    top: 50%;
+    left: -35px;
+    transform: translateY(-50%);
+    animation: floatReverse 5.2s ease-in-out infinite 1s;
+}
+
+.pulsing-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--kpl-gold);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulseDot 1.8s infinite;
+}
+
+/* 4. Button Shimmer Effect */
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-25deg);
+    animation: btnShine 3.5s infinite;
+}
+
+/* 5. Infinite Industrial Marquee Ticker */
+.industry-marquee {
+    background: linear-gradient(90deg, #071230 0%, #0D205E 50%, #071230 100%);
+    border-top: 1px solid rgba(245, 176, 0, 0.3);
+    border-bottom: 1px solid rgba(245, 176, 0, 0.3);
+    padding: 14px 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.industry-marquee::before,
+.industry-marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.industry-marquee::before {
+    left: 0;
+    background: linear-gradient(to right, #071230, transparent);
+}
+
+.industry-marquee::after {
+    right: 0;
+    background: linear-gradient(to left, #071230, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeScroll 25s linear infinite;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #F1F5F9;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 0 24px;
+    white-space: nowrap;
+}
+
+.marquee-star {
+    color: var(--kpl-gold);
+    font-size: 0.75rem;
+}
+
+/* 6. Stats Counter Bar Animations */
+.stat-box {
+    padding: 16px;
+    border-radius: 12px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.stat-number {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--kpl-gold);
+    line-height: 1.1;
+    margin-bottom: 6px;
+    text-shadow: 0 4px 15px rgba(245, 176, 0, 0.3);
+    letter-spacing: -0.5px;
+}
+
+/* 7. Category Card Enhancements */
+.category-card {
+    height: 270px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    box-shadow: 0 8px 25px rgba(13, 32, 94, 0.08);
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 18, 48, 0.25) 0%, rgba(13, 32, 94, 0.94) 100%);
+    transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(13, 32, 94, 0.25);
+}
+
+.category-card:hover::before {
+    background: linear-gradient(180deg, rgba(7, 18, 48, 0.1) 0%, rgba(13, 32, 94, 0.98) 100%);
+}
+
+.category-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    z-index: 2;
+    transition: transform 0.35s ease;
+}
+
+.category-card:hover .category-card-overlay {
+    transform: translateY(-4px);
+}
+
+/* 8. Floating WhatsApp Button Pulse & Crystal Glass Finish */
+.floating-whatsapp-btn {
+    animation: pulseRadar 2s infinite !important;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    backdrop-filter: blur(14px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+    box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.8),
+                inset 0 -2px 2px rgba(0, 0, 0, 0.2),
+                0 10px 28px rgba(37, 211, 102, 0.45) !important;
+    border: 2px solid rgba(255, 255, 255, 0.7) !important;
+}
+
+.floating-whatsapp-btn:hover {
+    transform: translateY(-3px) scale(1.15) !important;
+    box-shadow: inset 0 2.5px 2px rgba(255, 255, 255, 0.95),
+                0 16px 36px rgba(37, 211, 102, 0.6) !important;
+}
+
+/* 9. Interactive Feature Card Glowing Border on Hover */
+.feature-box-interactive {
+    background: #FFFFFF;
+    border: 1px solid var(--kpl-card-border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    height: 100%;
+}
+
+.feature-box-interactive:hover {
+    transform: translateY(-6px);
+    border-color: rgba(245, 176, 0, 0.5);
+    box-shadow: 0 16px 35px rgba(13, 32, 94, 0.12);
+}
+
+.feature-box-interactive:hover .feature-icon-badge {
+    background: linear-gradient(135deg, var(--kpl-gold) 0%, var(--kpl-orange) 100%);
+    color: var(--kpl-navy-dark);
+    transform: rotate(6deg) scale(1.1);
+}
+
+.feature-icon-badge {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(13, 32, 94, 0.08);
+    color: var(--kpl-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    transition: all 0.35s ease;
+    flex-shrink: 0;
+}
+
+/* ==============================================================
+   10. ENHANCED PRODUCT PAGE STYLES (PREMIUM CATALOG EXPERIENCE)
+   ============================================================== */
+
+/* Hero Showcase Product Ring */
+.product-hero-box {
+    position: relative;
+    padding: 30px 0;
+}
+.product-hero-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 176, 0, 0.15);
+    border: 1px solid rgba(245, 176, 0, 0.5);
+    color: var(--kpl-gold);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.catalog-title-glow {
+    text-shadow: 0 4px 28px rgba(245, 176, 0, 0.45);
+}
+
+.catalog-section-bar {
+    background: #FFFFFF;
+    border: 1px solid rgba(13, 32, 94, 0.08);
+    border-radius: 18px;
+    padding: 22px 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 20px rgba(13, 32, 94, 0.04);
+    border-left: 5px solid var(--kpl-gold);
+}
+
+/* Category Filter Ribbon */
+.catalog-filter-ribbon {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.catalog-filter-ribbon-wrapper {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-grow: 1;
+    min-width: 0;
+    padding: 3px 0;
+}
+.catalog-filter-ribbon-wrapper::-webkit-scrollbar {
+    display: none;
+}
+.catalog-filter-ribbon-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+.catalog-search-col {
+    flex-shrink: 0;
+    min-width: 270px;
+    max-width: 320px;
+}
+@media (max-width: 1199px) {
+    .catalog-search-col {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+.catalog-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--kpl-navy);
+    background: #FFFFFF;
+    border: 1px solid rgba(13, 32, 94, 0.16) !important;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    outline: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.catalog-filter-chip:hover {
+    background: #F1F5F9;
+    color: var(--kpl-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(13, 32, 94, 0.08);
+}
+
+.catalog-filter-chip.active {
+    background: linear-gradient(135deg, var(--kpl-navy) 0%, #153285 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 8px 20px rgba(13, 32, 94, 0.25);
+}
+
+.catalog-filter-chip .chip-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: #F1F5F9;
+    color: #64748B;
+    transition: all 0.3s ease;
+}
+
+.catalog-filter-chip.active .chip-count {
+    background: rgba(245, 176, 0, 0.25) !important;
+    color: var(--kpl-gold) !important;
+    border: 1px solid rgba(245, 176, 0, 0.4);
+}
+
+.catalog-search-box {
+    position: relative;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(13, 32, 94, 0.05);
+}
+
+.catalog-search-box .form-control {
+    border-radius: 30px;
+    padding: 11px 20px 11px 44px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(13, 32, 94, 0.15);
+    background: #F8FAFC;
+    transition: all 0.3s ease;
+}
+
+.catalog-search-box .form-control:focus {
+    border-color: var(--kpl-gold);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 4px rgba(245, 176, 0, 0.18);
+}
+
+.catalog-search-box .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94A3B8;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Pack Size Badges */
+.product-packs-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.product-pack-pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #F1F5F9;
+    color: #475569;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Category-Specific Distinct Grade Badges */
+.grade-auto { background: #FFF3CD !important; color: #856404 !important; border: 1px solid rgba(245, 176, 0, 0.45) !important; }
+.grade-hydraulic { background: #E0F2FE !important; color: #0369A1 !important; border: 1px solid rgba(2, 132, 199, 0.35) !important; }
+.grade-gear { background: #EDE9FE !important; color: #5B21B6 !important; border: 1px solid rgba(124, 58, 237, 0.35) !important; }
+.grade-industrial { background: #F1F5F9 !important; color: #334155 !important; border: 1px solid rgba(71, 85, 105, 0.3) !important; }
+.grade-grease { background: #FEE2E2 !important; color: #991B1B !important; border: 1px solid rgba(220, 38, 38, 0.35) !important; }
+.grade-metal { background: #DCFCE7 !important; color: #166534 !important; border: 1px solid rgba(22, 163, 74, 0.35) !important; }
+
+/* Packaging Showcase Cards */
+.pack-showcase-card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid rgba(13, 32, 94, 0.08);
+    padding: 28px 22px;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.pack-showcase-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 38px rgba(13, 32, 94, 0.12);
+    border-color: rgba(245, 176, 0, 0.5);
+}
+
+.pack-icon-circle {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(13, 32, 94, 0.06) 0%, rgba(245, 176, 0, 0.15) 100%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.85rem;
+    color: var(--kpl-navy);
+    margin-bottom: 18px;
+    transition: all 0.3s ease;
+}
+
+.pack-showcase-card:hover .pack-icon-circle {
+    background: var(--kpl-navy);
+    color: var(--kpl-gold);
+    transform: scale(1.1);
+}
+
+/* Lubricant Finder Assistant */
+.finder-card {
+    background: #FFFFFF;
+    border-radius: 22px;
+    border: 1px solid rgba(13, 32, 94, 0.1);
+    box-shadow: 0 12px 35px rgba(13, 32, 94, 0.07);
+    overflow: hidden;
+}
+
+.finder-header {
+    background: linear-gradient(135deg, var(--kpl-navy) 0%, #153285 100%);
+    color: #FFFFFF;
+    padding: 26px 32px;
+}
+
+.finder-step-btn {
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #334155;
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.finder-step-btn:hover {
+    border-color: var(--kpl-gold);
+    background: #FFFDF5;
+    transform: translateY(-2px);
+}
+
+.finder-step-btn.selected {
+    background: var(--kpl-navy);
+    color: #FFFFFF;
+    border-color: var(--kpl-gold);
+    box-shadow: 0 8px 18px rgba(13, 32, 94, 0.2);
+}
+
+.finder-step-btn.selected i {
+    color: var(--kpl-gold) !important;
+}
+
+.finder-result-box {
+    background: linear-gradient(135deg, #F8FAFC 0%, #FFFDF5 100%);
+    border: 2px dashed rgba(245, 176, 0, 0.6);
+    border-radius: 18px;
+    padding: 28px;
+}
+
+/* ==========================================================================
+   FOUNDER & EXECUTIVE SHOWCASE STYLING
+   ========================================================================== */
+.founder-avatar-frame {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(135deg, var(--kpl-gold) 0%, var(--kpl-navy) 100%);
+    box-shadow: 0 10px 25px rgba(13, 32, 94, 0.15);
+}
+
+.founder-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #0D205E;
+    color: #F5B000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.founder-avatar-placeholder i {
+    font-size: 48px;
+    margin-bottom: 4px;
+}
+
+.founder-avatar-placeholder .avatar-tag {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.contact-executive-card {
+    transition: var(--kpl-transition);
+    background: #ffffff;
+}
+
+.contact-executive-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--kpl-shadow-hover) !important;
+    border-color: var(--kpl-gold) !important;
+}
+
+.executive-avatar-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(13, 32, 94, 0.06);
+    color: var(--kpl-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    transition: var(--kpl-transition);
+}
+
+.contact-executive-card:hover .executive-avatar-icon {
+    background: var(--kpl-navy);
+    color: var(--kpl-gold);
+}
+
+@media (min-width: 768px) {
+    .border-start-md {
+        border-left: 1px solid #E2E8F0 !important;
+    }
+}
+
+
+
+/* Smooth Scroll Anchor Offsets for Contact Form */
+#contactPageFormCard, #contactPageForm {
+    scroll-margin-top: 100px;
+}

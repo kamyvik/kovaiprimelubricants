@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/api/enquiry.php", "destination": "/api/enquiry" },
+    { "source": "/api/data.php", "destination": "/api/data" },
+    { "source": "/api/upload.php", "destination": "/api/upload" },
+    { "source": "/api/save_enquiry", "destination": "/api/enquiry" }
+  ],
+  "redirects": [
+    {
+      "source": "/data/:path*",
+      "destination": "/",
+      "permanent": false
+    }
+  ]
+}

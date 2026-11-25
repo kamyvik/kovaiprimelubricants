@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Catalog | Kovai Prime Lubricants (KPL)</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom Brand Stylesheet with Glassmorphic Buttons -->
+    <link rel="stylesheet" href="assets/css/style.css?v=6.6">
+</head>
+<body>
+
+    <!-- TOP HEADER BAR -->
+    <div class="top-header d-none d-md-block">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="d-flex align-items-center gap-4">
+                        <span><i class="fas fa-phone-alt me-2 text-kpl-gold"></i><a href="tel:9655155266" class="text-white text-decoration-none hover-gold">+91 96551 55266</a></span>
+                        <span><i class="fas fa-envelope me-2 text-kpl-gold"></i><a href="mailto:kovaiprimelubricants24@gmail.com" class="text-white text-decoration-none hover-gold">kovaiprimelubricants24@gmail.com</a></span>
+                        <span><i class="fas fa-clock me-2 text-kpl-gold"></i>Mon - Sat: 9:00 AM - 8:00 PM</span>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <span class="badge bg-kpl-gold text-dark px-2 py-1 fs-12 fw-bold"><i class="fas fa-file-invoice me-1"></i> GSTIN: 33ABCFK9280H1Z7</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm py-2 navbar-kpl">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/images/logo.png" alt="Kovai Prime Lubricants Logo" style="height:52px;" class="navbar-brand-logo">
+                <div class="brand-text-wrapper">
+                    <span class="brand-title">KOVAI PRIME</span>
+                    <span class="brand-subtitle">LUBRICANTS</span>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#kplNavbar" aria-controls="kplNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="kplNavbar">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item"><a class="nav-link nav-link-kpl" href="index.html"><i class="fas fa-home text-kpl-gold"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-kpl active" href="products.html"><i class="fas fa-box text-kpl-gold"></i> Products</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-kpl" href="categories.html"><i class="fas fa-th-large text-kpl-gold"></i> Categories</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-kpl" href="gallery.html"><i class="fas fa-images text-kpl-gold"></i> Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-kpl" href="about.html"><i class="fas fa-circle-info text-kpl-gold"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-kpl" href="contact.html"><i class="fas fa-envelope text-kpl-gold"></i> Contact</a></li>
+                </ul>
+                <div class="ms-lg-3 mt-3 mt-lg-0">
+                    <a href="contact.html#contactPageFormCard" class="btn-header-quick-enquiry" title="Go to Enquiry Form">
+                        <i class="fas fa-paper-plane"></i> Quick Enquiry
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO BANNER (ATTRACTIVE 2-COLUMN INDUSTRIAL SHOWCASE) -->
+    <section class="py-5 bg-kpl-navy text-white position-relative overflow-hidden" style="background: radial-gradient(circle at 85% 25%, rgba(245, 176, 0, 0.16) 0%, transparent 45%), linear-gradient(135deg, #071230 0%, #0D205E 100%);">
+        <!-- Ambient Background Glow Circles -->
+        <div class="position-absolute top-0 end-0 translate-middle-y me-5 rounded-circle" style="width: 380px; height: 380px; background: rgba(245, 176, 0, 0.08); filter: blur(75px); pointer-events: none;"></div>
+        <div class="position-absolute bottom-0 start-0 translate-middle-y ms-5 rounded-circle" style="width: 320px; height: 320px; background: rgba(13, 32, 94, 0.35); filter: blur(65px); pointer-events: none;"></div>
+
+        <div class="container position-relative z-2">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <div class="mb-3 d-flex flex-wrap align-items-center gap-2">
+                        <span class="product-hero-badge-pill">
+                            <i class="fas fa-boxes-stacked text-kpl-gold"></i> Complete Lubricant Range
+                        </span>
+                        <span class="badge bg-white bg-opacity-10 text-white border border-white border-opacity-20 px-3 py-1.5 rounded-pill fs-12">
+                            <i class="fas fa-certificate text-kpl-gold me-1"></i> ISO 9001:2015 Lab Certified
+                        </span>
+                    </div>
+                    <h1 class="display-4 fw-extrabold text-white mb-3 leading-tight tracking-tight">
+                        Products <span class="text-kpl-gold catalog-title-glow">Catalog</span>
+                    </h1>
+                    <p class="lead text-white-50 mb-4" style="font-size: 1.12rem; max-width: 630px; line-height: 1.6;">
+                        Browse our complete engineering range of 16 precision-blended industrial & automotive lubricants, heavy-duty hydraulic oils, extreme-pressure gear fluids, and high-temp greases.
+                    </p>
+
+                    <!-- Quick Highlight Metric Chips -->
+                    <div class="d-flex flex-wrap gap-3 pt-3 border-top border-secondary border-opacity-25 text-white-50 fs-13">
+                        <span class="d-flex align-items-center gap-2"><i class="fas fa-check-circle text-kpl-gold"></i> <strong>16 Formulations:</strong> SAE, ISO & NLGI</span>
+                        <span class="d-flex align-items-center gap-2"><i class="fas fa-check-circle text-kpl-gold"></i> <strong>Packs:</strong> 1L to 210L Steel Barrels</span>
+                        <span class="d-flex align-items-center gap-2"><i class="fas fa-check-circle text-kpl-gold"></i> <strong>Dispatch:</strong> Same-Day Across India</span>
+                    </div>
+                </div>
+
+                <!-- Right Hero Floating Product Presentation -->
+                <div class="col-lg-5">
+                    <div class="card border-0 rounded-4 p-4 text-center shadow-lg position-relative" style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.15) !important;">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-warning text-dark fw-bold px-3 py-1.5 rounded-pill fs-12"><i class="fas fa-fire me-1"></i> Best Sellers</span>
+                            <span class="text-white-50 fs-12"><i class="fas fa-truck-fast text-kpl-gold me-1"></i> Factory Direct Supply</span>
+                        </div>
+                        <div class="py-3 text-center position-relative">
+                            <img src="assets/images/products/engine_oil.jpg" alt="KPL Flagship Lubricants" class="img-fluid rounded-4 shadow" style="max-height: 220px; object-fit: contain; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.4));">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between pt-3 border-top border-white border-opacity-10 text-start">
+                            <div>
+                                <h6 class="text-white fw-bold mb-0">Need Custom Viscosity?</h6>
+                                <small class="text-white-50">OEM custom blending & bulk pricing</small>
+                            </div>
+                            <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="Bulk Custom Formulation">
+                                Enquire <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE CATEGORY FILTER & LIVE SEARCH RIBBON -->
+    <section class="py-3 bg-white border-bottom shadow-sm sticky-top" style="top: 70px; z-index: 100;">
+        <div class="container">
+            <div class="row align-items-center g-3">
+                
+                <!-- Visual Category Filter Ribbon -->
+                <div class="col-xl-8 col-lg-7">
+                    <div class="catalog-filter-ribbon">
+                        <button type="button" class="catalog-filter-chip product-filter-btn active" data-filter="all">
+                            <span>All Products</span>
+                            <span class="chip-count">16</span>
+                        </button>
+                        <button type="button" class="catalog-filter-chip product-filter-btn" data-filter="automotive">
+                            <i class="fas fa-car-side text-kpl-gold"></i>
+                            <span>Automotive</span>
+                            <span class="chip-count">4</span>
+                        </button>
+                        <button type="button" class="catalog-filter-chip product-filter-btn" data-filter="hydraulic">
+                            <i class="fas fa-gears text-kpl-gold"></i>
+                            <span>Hydraulic</span>
+                            <span class="chip-count">3</span>
+                        </button>
+                        <button type="button" class="catalog-filter-chip product-filter-btn" data-filter="gear">
+                            <i class="fas fa-cogs text-kpl-gold"></i>
+                            <span>Gear Oils</span>
+                            <span class="chip-count">2</span>
+                        </button>
+                        <button type="button" class="catalog-filter-chip product-filter-btn" data-filter="industrial">
+                            <i class="fas fa-industry text-kpl-gold"></i>
+                            <span>Industrial</span>
+                            <span class="chip-count">3</span>
+                        </button>
+                        <button type="button" class="catalog-filter-chip product-filter-btn" data-filter="grease">
+                            <i class="fas fa-oil-can text-kpl-gold"></i>
+                            <span>Greases</span>
+                            <span class="chip-count">3</span>
+                        </button>
+                        <button type="button" class="catalog-filter-chip product-filter-btn" data-filter="metalworking">
+                            <i class="fas fa-flask text-kpl-gold"></i>
+                            <span>Cutting Oils</span>
+                            <span class="chip-count">1</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Instant Live Search Bar -->
+                <div class="col-xl-4 col-lg-5">
+                    <div class="catalog-search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="productSearchInput" class="form-control" placeholder="Search by name, grade (e.g. 5W-40, VG 46, NLGI)...">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL PRODUCTS CATALOG GRID -->
+    <section class="py-5 bg-kpl-light">
+        <div class="container">
+
+            <!-- Section Title & Live Catalog Status Bar -->
+            <div class="catalog-section-bar d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <span class="badge bg-warning text-dark fw-bold px-2.5 py-1 rounded-pill fs-12">
+                            <i class="fas fa-boxes-stacked me-1"></i> Live Formulations
+                        </span>
+                        <span class="text-muted fs-13" id="activeFilterFeedback">Showing all 16 certified grades</span>
+                    </div>
+                    <h2 class="display-6 fw-extrabold text-kpl-navy mb-0">Products <span class="text-kpl-gold">Catalog</span></h2>
+                </div>
+                <div class="d-flex align-items-center flex-wrap gap-2">
+                    <span class="badge bg-light text-kpl-navy border px-3 py-2 rounded-pill fs-13">
+                        <i class="fas fa-truck-fast text-kpl-gold me-1"></i> Direct Factory Supply
+                    </span>
+                    <a href="https://wa.me/919025035187?text=Hello%20Kovai%20Prime%20Lubricants,%20please%20send%20me%20your%20full%20product%20catalog%20and%20price%20list." target="_blank" class="btn btn-sm btn-kpl-gold d-inline-flex align-items-center gap-1 shadow-sm">
+                        <i class="fas fa-file-invoice me-1"></i> Request Price List
+                    </a>
+                </div>
+            </div>
+
+            <div class="row g-4" id="productsGridContainer">
+
+                <!-- Product 1: 5W-40 Full Synthetic -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="automotive" data-title="KPL PrimeSynth 5W-40 Full Synthetic Engine Oil" data-desc="Ultra-premium full synthetic passenger car engine oil formulated for peak thermal efficiency and wear protection.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/engine_oil.jpg" alt="KPL PrimeSynth 5W-40" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Automotive Oils</span>
+                                <span class="product-grade-badge grade-auto">SAE 5W-40</span>
+                            </div>
+                            <h5 class="product-title">KPL PrimeSynth 5W-40 Full Synthetic Engine Oil</h5>
+                            <p class="product-desc">Ultra-premium full synthetic passenger car engine oil for peak thermal efficiency and engine wear protection.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 1L</span>
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 3.5L</span>
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 5L</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> API SN / CF, ACEA A3/B4</li>
+                                <li><i class="fas fa-shield-halved text-kpl-gold me-1"></i> <strong>Base:</strong> 100% Fully Synthetic PAO</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=101" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL PrimeSynth 5W-40 Full Synthetic Engine Oil">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20PrimeSynth%205W-40%20Full%20Synthetic%20Engine%20Oil" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: 5W-30 EcoDrive -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="automotive" data-title="KPL EcoDrive 5W-30 Advanced Fuel Economy Engine Oil" data-desc="Low friction synthetic engine oil engineered to maximize fuel efficiency and timing chain wear protection.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/engine_oil.jpg" alt="KPL EcoDrive 5W-30" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Automotive Oils</span>
+                                <span class="product-grade-badge grade-auto">SAE 5W-30</span>
+                            </div>
+                            <h5 class="product-title">KPL EcoDrive 5W-30 Advanced Fuel Economy</h5>
+                            <p class="product-desc">Low friction synthetic engine oil engineered to maximize fuel efficiency and prevent LSPI engine pre-ignition.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 1L</span>
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 3.5L</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> API SP / ILSAC GF-6A</li>
+                                <li><i class="fas fa-shield-halved text-kpl-gold me-1"></i> <strong>Feature:</strong> Low-Speed Pre-Ignition Guard</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=102" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL EcoDrive 5W-30 Advanced Fuel Economy">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20EcoDrive%205W-30%20Advanced%20Fuel%20Economy" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: 15W-40 FleetDuty -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="automotive" data-title="KPL FleetDuty 15W-40 Turbo Diesel Engine Oil" data-desc="Heavy-duty API CK-4 / CI-4 Plus diesel oil designed for commercial fleets, tippers, and earthmovers.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/engine_oil.jpg" alt="KPL FleetDuty 15W-40" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Automotive Oils</span>
+                                <span class="product-grade-badge grade-auto">SAE 15W-40</span>
+                            </div>
+                            <h5 class="product-title">KPL FleetDuty 15W-40 Turbo Diesel Oil</h5>
+                            <p class="product-desc">Heavy-duty API CK-4 / CI-4 Plus diesel oil designed for long-haul commercial fleets and earthmovers.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 5L</span>
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 7.5L</span>
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 15L</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> API CK-4 / CI-4 Plus / SL</li>
+                                <li><i class="fas fa-truck-moving text-kpl-gold me-1"></i> <strong>Use:</strong> Multi-Axle Trucks & Tippers</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=103" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL FleetDuty 15W-40 Turbo Diesel Oil">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20FleetDuty%2015W-40%20Turbo%20Diesel%20Oil" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: 20W-40 SuperTractor -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="automotive" data-title="KPL SuperTractor 20W-40 Agricultural Engine Oil" data-desc="Specially compounded heavy-duty diesel engine oil for agricultural tractors, harvesters, and pumps.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/engine_oil.jpg" alt="KPL SuperTractor 20W-40" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Automotive Oils</span>
+                                <span class="product-grade-badge grade-auto">SAE 20W-40</span>
+                            </div>
+                            <h5 class="product-title">KPL SuperTractor 20W-40 Agri Engine Oil</h5>
+                            <p class="product-desc">Specially compounded diesel engine oil with high TBN for agricultural tractors, harvesters, and pumps.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 5L</span>
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 7.5L</span>
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 10L</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> API CF-4 / SF, IS 13656</li>
+                                <li><i class="fas fa-tractor text-kpl-gold me-1"></i> <strong>Use:</strong> Tractors, Harvesters & Pumpsets</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=104" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL SuperTractor 20W-40 Agri Engine Oil">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20SuperTractor%2020W-40%20Agri%20Engine%20Oil" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: HydroShield 46 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="hydraulic" data-title="KPL HydroShield 46 Anti-Wear Hydraulic Fluid" data-desc="Premium ISO VG 46 anti-wear hydraulic oil for high-pressure systems, CNC machines, and injection molding.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/hydraulic_oil.jpg" alt="KPL HydroShield 46" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Hydraulic Fluids</span>
+                                <span class="product-grade-badge grade-hydraulic">ISO VG 46</span>
+                            </div>
+                            <h5 class="product-title">KPL HydroShield 46 Anti-Wear Hydraulic Fluid</h5>
+                            <p class="product-desc">Premium anti-wear hydraulic oil with zinc additives for high-pressure industrial systems and excavators.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 26L Pail</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L Barrel</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> DIN 51524 Part 2 (HLP)</li>
+                                <li><i class="fas fa-gears text-kpl-gold me-1"></i> <strong>Pump:</strong> Vane & Piston Protection</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=105" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL HydroShield 46 Anti-Wear Hydraulic Fluid">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20HydroShield%2046%20Anti-Wear%20Hydraulic%20Fluid" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: HydroShield 68 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="hydraulic" data-title="KPL HydroShield 68 Heavy Duty Hydraulic Oil" data-desc="Heavy viscosity ISO VG 68 hydraulic oil for earthmoving excavators, cranes, and heavy stamping presses.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/hydraulic_oil.jpg" alt="KPL HydroShield 68" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Hydraulic Fluids</span>
+                                <span class="product-grade-badge grade-hydraulic">ISO VG 68</span>
+                            </div>
+                            <h5 class="product-title">KPL HydroShield 68 Heavy Duty Hydraulic Oil</h5>
+                            <p class="product-desc">Heavy viscosity anti-wear hydraulic oil for earthmoving excavators, mobile cranes, and stamping presses.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 26L Pail</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L Barrel</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> DIN 51524 HLP, Denison HF-0</li>
+                                <li><i class="fas fa-shield-halved text-kpl-gold me-1"></i> <strong>Rating:</strong> Extreme Pressure Anti-Wear</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=106" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL HydroShield 68 Heavy Duty Hydraulic Oil">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20HydroShield%2068%20Heavy%20Duty%20Hydraulic%20Oil" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7: HydroShield HVI 32 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="hydraulic" data-title="KPL HydroShield HVI 32 High Viscosity Index Hydraulic Oil" data-desc="High Viscosity Index (VI > 150) all-weather hydraulic oil for precision robotics and mobile hydraulic systems.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/hydraulic_oil.jpg" alt="KPL HydroShield HVI 32" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Hydraulic Fluids</span>
+                                <span class="product-grade-badge grade-hydraulic">ISO VG 32 HVI</span>
+                            </div>
+                            <h5 class="product-title">KPL HydroShield HVI 32 All-Weather Hydraulic</h5>
+                            <p class="product-desc">High Viscosity Index (VI > 150) all-weather hydraulic oil for precision robotics and automated CNC platforms.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 26L Pail</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L Barrel</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> DIN 51524 Part 3 (HVLP)</li>
+                                <li><i class="fas fa-temperature-arrow-up text-kpl-gold me-1"></i> <strong>Index:</strong> VI > 150 Wide-Temp Range</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=107" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL HydroShield HVI 32 All-Weather Hydraulic">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20HydroShield%20HVI%2032%20All-Weather%20Hydraulic" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8: GearMax 80W-90 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="gear" data-title="KPL GearMax 80W-90 Extreme Pressure Gear Oil" data-desc="Heavy-duty API GL-5 gear lubricant engineered for severe shock-load conditions in automotive gearboxes.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/gear_oil.jpg" alt="KPL GearMax 80W-90" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Gear Lubricants</span>
+                                <span class="product-grade-badge grade-gear">SAE 80W-90</span>
+                            </div>
+                            <h5 class="product-title">KPL GearMax 80W-90 EP Gear Oil</h5>
+                            <p class="product-desc">Heavy-duty API GL-5 hypoid gear lubricant engineered for severe shock-load conditions in commercial differentials.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 1L</span>
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 5L</span>
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 20L</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> API GL-5, MIL-L-2105D</li>
+                                <li><i class="fas fa-cogs text-kpl-gold me-1"></i> <strong>Protection:</strong> Anti-Scuffing Hypoid EP</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=108" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL GearMax 80W-90 EP Gear Oil">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20GearMax%2080W-90%20EP%20Gear%20Oil" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9: GearMax 85W-140 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="gear" data-title="KPL GearMax 85W-140 Heavy Axle Differential Oil" data-desc="Heavy-viscosity hypoid gear oil for heavy-haul trucks, multi-axle trailers, and mining dumpers.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/gear_oil.jpg" alt="KPL GearMax 85W-140" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Gear Lubricants</span>
+                                <span class="product-grade-badge grade-gear">SAE 85W-140</span>
+                            </div>
+                            <h5 class="product-title">KPL GearMax 85W-140 Heavy Axle Differential</h5>
+                            <p class="product-desc">Heavy-viscosity hypoid gear oil for multi-axle commercial trailers, mining tippers, and rock crushers.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-cube text-kpl-gold"></i> 5L</span>
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 20L</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> API GL-5 / MT-1</li>
+                                <li><i class="fas fa-truck text-kpl-gold me-1"></i> <strong>Use:</strong> Heavy Crown Wheel & Pinion</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=109" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL GearMax 85W-140 Heavy Axle Differential">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20GearMax%2085W-140%20Heavy%20Axle%20Differential" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10: InduGear 220 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="industrial" data-title="KPL InduGear 220 Industrial Enclosed Gearbox Oil" data-desc="Extreme pressure enclosed industrial gear oil with micropitting resistance for factory gearboxes.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/industrial_oil.jpg" alt="KPL InduGear 220" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Industrial Oils</span>
+                                <span class="product-grade-badge grade-industrial">ISO VG 220</span>
+                            </div>
+                            <h5 class="product-title">KPL InduGear 220 Enclosed Gearbox Oil</h5>
+                            <p class="product-desc">Extreme pressure enclosed industrial gear oil with FZG stage > 12 micropitting resistance for factory speed reducers.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 20L Pail</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L Barrel</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> DIN 51517 Part 3 (CLP)</li>
+                                <li><i class="fas fa-gears text-kpl-gold me-1"></i> <strong>Load:</strong> FZG Stage > 12 Micropitting</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=110" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL InduGear 220 Enclosed Gearbox Oil">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20InduGear%20220%20Enclosed%20Gearbox%20Oil" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 11: InduLube VG 68 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="industrial" data-title="KPL InduLube VG 68 Slideway & Machine Tool Oil" data-desc="Specialized slideway lubricant eliminating stick-slip friction in CNC lathe ways and precision machine tools.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/industrial_oil.jpg" alt="KPL InduLube VG 68" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Industrial Oils</span>
+                                <span class="product-grade-badge grade-industrial">ISO VG 68</span>
+                            </div>
+                            <h5 class="product-title">KPL InduLube VG 68 Slideway Machine Oil</h5>
+                            <p class="product-desc">Specialized slideway lubricant eliminating stick-slip chatter in CNC lathe beds and vertical machining centers.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 20L Pail</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L Barrel</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> Fives Cincinnati P-47</li>
+                                <li><i class="fas fa-magnet text-kpl-gold me-1"></i> <strong>Tech:</strong> Anti-Stick-Slip Tackifier</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=111" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL InduLube VG 68 Slideway Machine Oil">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20InduLube%20VG%2068%20Slideway%20Machine%20Oil" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 12: SpindleTex 12 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="industrial" data-title="KPL SpindleTex 12 High Speed Textile Spindle Oil" data-desc="Ultra-low viscosity spindle oil formulated for high RPM textile ring frames and precision grinding spindles.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/industrial_oil.jpg" alt="KPL SpindleTex 12" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Industrial Oils</span>
+                                <span class="product-grade-badge grade-industrial">ISO VG 12</span>
+                            </div>
+                            <h5 class="product-title">KPL SpindleTex 12 High Speed Spindle Oil</h5>
+                            <p class="product-desc">Ultra-low viscosity non-staining oil for 20,000+ RPM textile spinning ring frames and grinding spindles.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 20L Pail</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L Barrel</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> IS 493 Part 1, Non-Staining</li>
+                                <li><i class="fas fa-gauge-high text-kpl-gold me-1"></i> <strong>RPM:</strong> Rated for 20,000+ RPM Spindles</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=112" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL SpindleTex 12 High Speed Spindle Oil">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20SpindleTex%2012%20High%20Speed%20Spindle%20Oil" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 13: ThermoGrease -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="grease" data-title="KPL ThermoGrease High Temp Lithium Complex Grease" data-desc="NLGI 2 heavy-duty lithium complex grease with 260°C+ dropping point for extreme heat and bearing friction.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/grease.jpg" alt="KPL ThermoGrease" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Specialty Greases</span>
+                                <span class="product-grade-badge grade-grease">NLGI 2 Complex</span>
+                            </div>
+                            <h5 class="product-title">KPL ThermoGrease High Temp Lithium Complex</h5>
+                            <p class="product-desc">NLGI 2 heavy-duty lithium complex grease with 260°C+ dropping point for extreme heat and wheel bearing friction.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-box text-kpl-gold"></i> 1kg</span>
+                                <span class="product-pack-pill"><i class="fas fa-box text-kpl-gold"></i> 5kg</span>
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 18kg</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 180kg Drum</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Drop Point:</strong> 260°C+ Non-Melting</li>
+                                <li><i class="fas fa-fire-burner text-kpl-gold me-1"></i> <strong>Application:</strong> Heavy Wheel Hubs & Kilns</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=113" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL ThermoGrease High Temp Lithium Complex">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20ThermoGrease%20High%20Temp%20Lithium%20Complex" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 14: MultiLube MP-3 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="grease" data-title="KPL MultiLube MP-3 Multipurpose Lithium Grease" data-desc="High quality all-purpose lithium grease for automotive chassis, universal joints, and electric motor bearings.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/grease.jpg" alt="KPL MultiLube MP-3" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Specialty Greases</span>
+                                <span class="product-grade-badge grade-grease">NLGI 3</span>
+                            </div>
+                            <h5 class="product-title">KPL MultiLube MP-3 Multipurpose Grease</h5>
+                            <p class="product-desc">Pure lithium stearate soap grease with mechanical shear stability for chassis nipples, pumps, and electric motors.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-box text-kpl-gold"></i> 1kg</span>
+                                <span class="product-pack-pill"><i class="fas fa-box text-kpl-gold"></i> 5kg</span>
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 18kg</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 180kg Drum</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Thickener:</strong> Pure Lithium Base</li>
+                                <li><i class="fas fa-water text-kpl-gold me-1"></i> <strong>Washout:</strong> Water Washout Resistant</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=114" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL MultiLube MP-3 Multipurpose Grease">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20MultiLube%20MP-3%20Multipurpose%20Grease" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 15: MolyShield EP-2 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="grease" data-title="KPL MolyShield Heavy Duty EP-2 Moly Grease" data-desc="Molybdenum Disulfide (3% MoS2) fortified grease for excavator pins, pivot bushings, and fifth wheels.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/grease.jpg" alt="KPL MolyShield EP-2" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Specialty Greases</span>
+                                <span class="product-grade-badge grade-grease">NLGI 2 + MoS2</span>
+                            </div>
+                            <h5 class="product-title">KPL MolyShield Heavy Duty EP-2 Moly Grease</h5>
+                            <p class="product-desc">Fortified with 3% Molybdenum Disulfide (MoS2) solid lubricant for excavator bucket pins and heavy pivot bushings.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-box text-kpl-gold"></i> 1kg</span>
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 18kg Pail</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 180kg Drum</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Solid Film:</strong> 3% MoS2 Shock-Load</li>
+                                <li><i class="fas fa-shield-halved text-kpl-gold me-1"></i> <strong>Load:</strong> Heavy Shock Load Protection</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=115" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL MolyShield Heavy Duty EP-2 Moly Grease">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20MolyShield%20Heavy%20Duty%20EP-2%20Moly%20Grease" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 16: SoluCut Coolant -->
+                <div class="col-md-6 col-lg-4 col-xl-3 product-item-col" data-category="metalworking" data-title="KPL SoluCut Coolant Water Soluble Cutting Fluid" data-desc="Bio-stable water soluble metalworking cutting oil creating stable milky emulsion for CNC machining.">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="assets/images/products/cutting_oil.jpg" alt="KPL SoluCut Coolant" class="product-img">
+                        </div>
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="product-category-badge">Metalworking</span>
+                                <span class="product-grade-badge grade-metal">Emulsion (1:20)</span>
+                            </div>
+                            <h5 class="product-title">KPL SoluCut Water Soluble Cutting Oil</h5>
+                            <p class="product-desc">Bio-stable water-soluble cutting fluid forming a stable milky emulsion with rust inhibitors for CNC machining.</p>
+                            
+                            <div class="product-packs-row">
+                                <span class="product-pack-pill"><i class="fas fa-bucket text-kpl-gold"></i> 20L Pail</span>
+                                <span class="product-pack-pill"><i class="fas fa-drum text-kpl-gold"></i> 210L Barrel</span>
+                            </div>
+
+                            <ul class="product-specs-list">
+                                <li><i class="fas fa-check-circle text-kpl-gold me-1"></i> <strong>Standard:</strong> IS 1115, Cast Iron Zero Rust</li>
+                                <li><i class="fas fa-biohazard text-kpl-gold me-1"></i> <strong>Emulsion:</strong> Bio-Stable Anti-Fungal Formula</li>
+                            </ul>
+                            <div class="product-footer d-flex gap-2">
+                                <a href="product-detail.html?id=116" class="btn btn-sm btn-kpl-outline flex-grow-1">Specs <i class="fas fa-arrow-right ms-1"></i></a>
+                                <button class="btn btn-sm btn-kpl-gold trigger-enquiry" data-product="KPL SoluCut Water Soluble Cutting Oil">Enquire</button>
+                                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20am%20interested%20in%20KPL%20SoluCut%20Water%20Soluble%20Cutting%20Oil" target="_blank" class="btn btn-sm btn-success px-2.5 d-inline-flex align-items-center justify-content-center" title="WhatsApp Enquiry"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NO PRODUCTS FOUND FALLBACK -->
+                <div id="noProductsFound" class="col-12 text-center py-5 d-none">
+                    <div class="p-5 bg-white rounded-4 border shadow-sm max-w-500 mx-auto">
+                        <i class="fas fa-search fs-1 text-kpl-gold mb-3"></i>
+                        <h4 class="fw-bold text-kpl-navy">No Matching Lubricants Found</h4>
+                        <p class="text-muted fs-14 mb-3">We couldn't find any products matching your search criteria. Try a different keyword or category.</p>
+                        <button type="button" class="btn btn-sm btn-kpl-primary" onclick="document.getElementById('productSearchInput').value=''; document.querySelector('.product-filter-btn[data-filter=\'all\']').click();">
+                            Reset Filters
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE LUBRICANT FINDER ASSISTANT (HIGH VISIBILITY RECOMMENDATION TOOL) -->
+    <section class="py-5 bg-white border-top border-bottom">
+        <div class="container">
+            <div class="finder-card">
+                <div class="finder-header">
+                    <div class="row align-items-center g-3">
+                        <div class="col-lg-8">
+                            <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill fw-bold fs-12 mb-2">
+                                <i class="fas fa-compass me-1"></i> Technical Grade Finder
+                            </span>
+                            <h3 class="fw-bold text-white mb-1">Find the Right Formulation for Your Application</h3>
+                            <p class="text-white-50 mb-0 fs-14">Select your sector or machinery type to receive instant lubrication grade recommendations.</p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20need%20lubricant%20grade%20recommendation." target="_blank" class="btn btn-kpl-gold btn-sm px-3 py-2">
+                                <i class="fab fa-whatsapp me-1"></i> Ask Lubricant Engineer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 p-lg-5 bg-light">
+                    <div class="row g-4">
+                        <!-- Left Selector Buttons -->
+                        <div class="col-lg-6">
+                            <h6 class="fw-bold text-kpl-navy mb-3"><i class="fas fa-list-check text-kpl-gold me-2"></i> Select Application or Sector:</h6>
+                            <div class="d-grid gap-2">
+                                <button type="button" class="finder-step-btn selected" data-finder-key="auto_fleet">
+                                    <i class="fas fa-truck-moving text-kpl-gold fs-5"></i>
+                                    <div>
+                                        <div class="fw-bold">Heavy Commercial Fleets & Tippers</div>
+                                        <small class="text-muted">Highway transport, diesel buses, excavators, tippers</small>
+                                    </div>
+                                </button>
+                                <button type="button" class="finder-step-btn" data-finder-key="auto_car">
+                                    <i class="fas fa-car-side text-kpl-gold fs-5"></i>
+                                    <div>
+                                        <div class="fw-bold">Passenger Cars & SUV Engines</div>
+                                        <small class="text-muted">Turbocharged petrol, MPFI & modern common-rail diesel</small>
+                                    </div>
+                                </button>
+                                <button type="button" class="finder-step-btn" data-finder-key="hydraulic_excavator">
+                                    <i class="fas fa-gear text-kpl-gold fs-5"></i>
+                                    <div>
+                                        <div class="fw-bold">Hydraulic Excavators & Heavy Presses</div>
+                                        <small class="text-muted">High-pressure hydraulic circuits, plastic molding, stamping</small>
+                                    </div>
+                                </button>
+                                <button type="button" class="finder-step-btn" data-finder-key="industrial_slideway">
+                                    <i class="fas fa-industry text-kpl-gold fs-5"></i>
+                                    <div>
+                                        <div class="fw-bold">CNC Lathes & Slideway Tool Beds</div>
+                                        <small class="text-muted">Precision CNC machine tool ways, eliminates stick-slip friction</small>
+                                    </div>
+                                </button>
+                                <button type="button" class="finder-step-btn" data-finder-key="grease_bearing">
+                                    <i class="fas fa-oil-can text-kpl-gold fs-5"></i>
+                                    <div>
+                                        <div class="fw-bold">High-Temperature Wheel Bearings</div>
+                                        <small class="text-muted">Wheel hubs, vibrating screens, continuous high-heat rollers</small>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right Live Recommendation Result Box -->
+                        <div class="col-lg-6">
+                            <h6 class="fw-bold text-kpl-navy mb-3"><i class="fas fa-bullseye text-kpl-gold me-2"></i> Recommended Formulation:</h6>
+                            <div class="finder-result-box h-100 d-flex flex-column justify-content-between" id="finderResultDisplay">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="badge bg-kpl-navy text-white px-3 py-1.5 rounded-pill fs-12" id="finderResultCategory">Automotive Oils</span>
+                                        <span class="badge bg-warning text-dark fw-bold px-3 py-1.5 rounded-pill fs-12" id="finderResultGrade">SAE 15W-40 (API CK-4)</span>
+                                    </div>
+                                    <h4 class="fw-bold text-kpl-navy mb-2" id="finderResultTitle">KPL FleetDuty 15W-40 Turbo Diesel Oil</h4>
+                                    <p class="text-muted fs-14 mb-3" id="finderResultDesc">
+                                        Engineered for heavy-duty commercial fleets and earthmovers operating in severe Indian heat. Provides maximum soot suspension, ring sticking protection, and extended drain intervals.
+                                    </p>
+                                    <div class="p-3 bg-white rounded-3 shadow-sm mb-4 border">
+                                        <div class="d-flex align-items-center gap-2 fs-13 text-secondary mb-1">
+                                            <i class="fas fa-check-circle text-kpl-gold"></i>
+                                            <span><strong>Recommended Viscosity:</strong> <span id="finderResultVisc">SAE 15W-40 Multigrade</span></span>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2 fs-13 text-secondary">
+                                            <i class="fas fa-check-circle text-kpl-gold"></i>
+                                            <span><strong>OEM Specification:</strong> <span id="finderResultSpec">API CK-4 / CI-4 Plus / SL, Cummins CES 20086</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <a id="finderResultLink" href="product-detail.html?id=103" class="btn btn-kpl-primary flex-grow-1">
+                                        View Technical Specs <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                    <button class="btn btn-kpl-gold trigger-enquiry" id="finderResultEnquireBtn" data-product="KPL FleetDuty 15W-40 Turbo Diesel Oil">
+                                        Request Quote
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRIAL PACKAGING OPTIONS SHOWCASE -->
+    <section class="py-5 bg-kpl-light">
+        <div class="container">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="text-kpl-orange fw-bold text-uppercase tracking-wider fs-13">Flexible Packaging</span>
+                <h2 class="fw-bold mt-1 display-6">Supplied in Precision Barrels & Consumer Packs</h2>
+                <p class="text-muted">From workshop bottles to 210L epoxy-coated industrial steel drums and bulk tanker loads across India.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Pack 1: Bottles -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="pack-showcase-card">
+                        <div class="pack-icon-circle">
+                            <i class="fas fa-bottle-droplet"></i>
+                        </div>
+                        <h5 class="fw-bold text-kpl-navy mb-2">1L, 3.5L & 5L Packs</h5>
+                        <p class="text-muted fs-14 mb-3">Ergonomic grip bottles with tamper-evident induction heat seal for automobile workshops and garages.</p>
+                        <span class="badge bg-light text-kpl-navy border px-2.5 py-1 rounded-pill fs-12">Retail & Service Centers</span>
+                    </div>
+                </div>
+
+                <!-- Pack 2: Pails -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="pack-showcase-card">
+                        <div class="pack-icon-circle">
+                            <i class="fas fa-bucket"></i>
+                        </div>
+                        <h5 class="fw-bold text-kpl-navy mb-2">10L & 15L Fleet Cans</h5>
+                        <p class="text-muted fs-14 mb-3">Reinforced poly-pails with spill-proof spouts suited for commercial fleet top-ups and agricultural tractors.</p>
+                        <span class="badge bg-light text-kpl-navy border px-2.5 py-1 rounded-pill fs-12">Fleet Operators & Agri</span>
+                    </div>
+                </div>
+
+                <!-- Pack 3: Heavy Pails -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="pack-showcase-card">
+                        <div class="pack-icon-circle">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <h5 class="fw-bold text-kpl-navy mb-2">20L & 26L Industrial Pails</h5>
+                        <p class="text-muted fs-14 mb-3">Heavy-duty buckets designed for hydraulic reservoirs, factory maintenance, and grease dispensers.</p>
+                        <span class="badge bg-light text-kpl-navy border px-2.5 py-1 rounded-pill fs-12">Factory Maintenance</span>
+                    </div>
+                </div>
+
+                <!-- Pack 4: Barrels -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="pack-showcase-card">
+                        <div class="pack-icon-circle">
+                            <i class="fas fa-drum"></i>
+                        </div>
+                        <h5 class="fw-bold text-kpl-navy mb-2">210L Steel Barrels</h5>
+                        <p class="text-muted fs-14 mb-3">International standard epoxy internal lined steel drums with tamper-proof seal caps and batch test certificates.</p>
+                        <span class="badge bg-warning text-dark fw-bold px-2.5 py-1 rounded-pill fs-12">High-Volume Wholesale</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAB QUALITY ASSURANCE METRICS -->
+    <section class="py-5 bg-white border-top">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <span class="text-kpl-orange fw-bold text-uppercase tracking-wider fs-13">Certified Quality</span>
+                    <h2 class="fw-bold text-kpl-navy mt-1 display-6 mb-3">Every Batch Lab Certified Before Dispatch</h2>
+                    <p class="text-muted mb-4">
+                        Kovai Prime Lubricants operates a dedicated quality assurance laboratory ensuring every drum meets stringent kinematic viscosity, flash point, and wear benchmarks.
+                    </p>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-kpl-gold text-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <i class="fas fa-award fs-4"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold text-kpl-navy mb-0">ISO 9001:2015 Certified</h6>
+                            <small class="text-muted">Batch Certificate of Analysis (COA) supplied with orders</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="feature-box-interactive">
+                                <div class="feature-icon-badge mb-3">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <h6 class="fw-bold text-kpl-navy mb-1">ASTM D445 Viscosity</h6>
+                                <p class="text-muted fs-13 mb-0">Kinematic viscosity at 40°C & 100°C verified for zero shear breakdown.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="feature-box-interactive">
+                                <div class="feature-icon-badge mb-3">
+                                    <i class="fas fa-fire-flame-curved"></i>
+                                </div>
+                                <h6 class="fw-bold text-kpl-navy mb-1">ASTM D92 Flash Point</h6>
+                                <p class="text-muted fs-13 mb-0">Cleveland Open Cup tested (> 220°C) for extreme thermal operating limits.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="feature-box-interactive">
+                                <div class="feature-icon-badge mb-3">
+                                    <i class="fas fa-shield-halved"></i>
+                                </div>
+                                <h6 class="fw-bold text-kpl-navy mb-1">ASTM D2783 EP Wear Test</h6>
+                                <p class="text-muted fs-13 mb-0">Four-ball extreme pressure weld load testing preventing tooth scuffing.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="feature-box-interactive">
+                                <div class="feature-icon-badge mb-3">
+                                    <i class="fas fa-droplet"></i>
+                                </div>
+                                <h6 class="fw-bold text-kpl-navy mb-1">100% Virgin Base Stocks</h6>
+                                <p class="text-muted fs-13 mb-0">Strict zero-tolerance policy against recycled or re-refined base oils.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BULK WHOLESALE & CUSTOM BLENDING CTA -->
+    <section class="py-5 bg-kpl-navy text-white text-center position-relative overflow-hidden" style="background: linear-gradient(135deg, #071230 0%, #0D205E 100%);">
+        <div class="container position-relative z-2">
+            <h2 class="display-6 fw-bold mb-3 text-white">Need Wholesale Drum Pricing or Custom Blending?</h2>
+            <p class="lead text-white-50 max-w-700 mx-auto mb-4">
+                We supply government contractors, transport fleet depots, and manufacturing plants with bulk drum delivery and tailored lubricant formulations.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <button class="btn btn-kpl-gold btn-lg btn-shine trigger-enquiry" data-product="Bulk Wholesale Order">
+                    <i class="fas fa-file-invoice me-2"></i> Request Commercial Price List
+                </button>
+                <a href="https://wa.me/919025035187?text=Hello%20KPL,%20I%20need%20bulk%20wholesale%20pricing." target="_blank" class="btn btn-success btn-lg">
+                    <i class="fab fa-whatsapp me-2"></i> Direct WhatsApp Order
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer-kpl text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-white p-2 rounded d-inline-block mb-3 shadow-sm">
+                        <img src="assets/images/logo.png" alt="KPL Logo" style="height: 48px;">
+                    </div>
+                    <p class="text-white-50 pe-lg-3 fs-14 mb-3">
+                        Kovai Prime Lubricants (KPL) is a premier manufacturer & supplier of high-performance automotive engine oils, industrial hydraulic fluids, extreme pressure gear oils, and specialty lithium greases.
+                    </p>
+                    <span class="badge bg-kpl-gold text-dark px-3 py-2 fw-bold"><i class="fas fa-award me-1"></i> ISO 9001:2015 Certified</span>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="index.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> Home</a></li>
+                        <li class="mb-2"><a href="products.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> Products</a></li>
+                        <li class="mb-2"><a href="categories.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> Categories</a></li>
+                        <li class="mb-2"><a href="gallery.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> Gallery</a></li>
+                        <li class="mb-2"><a href="about.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> About Us</a></li>
+                        <li class="mb-2"><a href="contact.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-heading">Top Categories</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="products.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> Automotive Oils</a></li>
+                        <li class="mb-2"><a href="products.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> Industrial Oils</a></li>
+                        <li class="mb-2"><a href="products.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> Hydraulic Fluids</a></li>
+                        <li class="mb-2"><a href="products.html" class="footer-link"><i class="fas fa-chevron-right text-kpl-gold fs-12"></i> Greases & Specialty</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-heading">Contact Details</h5>
+                    <div class="contact-item-box fs-14">
+                        <div class="contact-icon-badge"><i class="fas fa-map-marker-alt"></i></div>
+                        <span class="text-white-50">394, Nalla Thanneer Thottam, Sanganoor Main Rd, Ganapathy, Coimbatore - 641006, Tamil Nadu, India</span>
+                    </div>
+                    <div class="contact-item-box fs-14">
+                        <div class="contact-icon-badge"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <a href="tel:+919655155266" class="text-white-50 text-decoration-none d-block hover-gold">+91 96551 55266</a>
+                            <a href="tel:+919025035187" class="text-white-50 text-decoration-none d-block hover-gold">+91 90250 35187</a>
+                        </div>
+                    </div>
+                    <div class="contact-item-box fs-14">
+                        <div class="contact-icon-badge"><i class="fas fa-envelope"></i></div>
+                        <a href="mailto:kovaiprimelubricants24@gmail.com" class="text-white-50 text-decoration-none hover-gold">kovaiprimelubricants24@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between pt-4 text-white-50 fs-14">
+                <p class="mb-2 mb-md-0">&copy; 2026 <strong>Kovai Prime Lubricants</strong>. All Rights Reserved.</p>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="text-white-50"><i class="fas fa-shield-halved text-kpl-gold me-1"></i> ISO 9001:2015 Certified</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QUICK ENQUIRY MODAL -->
+    <div class="modal fade" id="quickEnquiryModal" tabindex="-1" aria-labelledby="quickEnquiryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
+                <div class="modal-header bg-kpl-navy text-white px-4 py-3 border-0">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-kpl-gold text-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                            <i class="fas fa-file-signature fs-5"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title fw-bold text-white mb-0" id="quickEnquiryModalLabel">Quick Product Enquiry</h5>
+                            <small class="text-white-50">Get competitive price quotes & technical datasheets from KPL experts</small>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    <div id="enquiryFormAlert" class="alert d-none" role="alert"></div>
+                    <form id="quickEnquiryForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="enquiry_name" class="form-label fw-semibold text-kpl-navy">Full Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="enquiry_name" name="name" placeholder="e.g. Rajesh Kumar" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="enquiry_phone" class="form-label fw-semibold text-kpl-navy">Contact Number <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="enquiry_phone" name="phone" placeholder="e.g. 9876543210" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="enquiry_whatsapp" class="form-label fw-semibold text-kpl-navy">WhatsApp Number</label>
+                                <input type="tel" class="form-control" id="enquiry_whatsapp" name="whatsapp" placeholder="e.g. 9876543210 (Optional)">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="enquiry_email" class="form-label fw-semibold text-kpl-navy">Email Address <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="enquiry_email" name="email" placeholder="name@company.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="enquiry_product" class="form-label fw-semibold text-kpl-navy">Product / Interest</label>
+                                <input type="text" class="form-control" id="enquiry_product" name="product" value="Product Inquiry">
+                            </div>
+                            <div class="col-12">
+                                <label for="enquiry_message" class="form-label fw-semibold text-kpl-navy">Requirement Details</label>
+                                <textarea class="form-control" id="enquiry_message" name="message" rows="3" placeholder="Specify estimated quantity (barrels, buckets) or machine application..."></textarea>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-4 pt-3 border-top">
+                            <small class="text-muted"><i class="fas fa-lock me-1"></i> Confidential.</small>
+                            <button type="submit" class="btn btn-kpl-gold px-4 py-2"><i class="fas fa-paper-plane me-2"></i> Submit Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON WITH GLASS RADAR -->
+    <a href="https://wa.me/919025035187?text=Hello%20Kovai%20Prime%20Lubricants,%20I%20have%20an%20enquiry." target="_blank" class="floating-whatsapp-btn" title="WhatsApp: +91 90250 35187" aria-label="WhatsApp: +91 90250 35187" style="position: fixed !important; bottom: 25px !important; right: 25px !important; z-index: 1040 !important; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important; color: #ffffff !important; width: 56px !important; height: 56px !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; border: 2px solid #ffffff !important; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4) !important;">
+        <i class="fab fa-whatsapp" style="color: #ffffff !important; font-size: 28px !important;"></i>
+    </a>
+
+    <!-- Bootstrap Bundle & Main JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js?v=2.2"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+[
+    {
+        "id": "GAL-REGRESS-01",
+        "title": "Automated Blending Plant",
+        "category": "facilities",
+        "categoryName": "Plant & Facilities",
+        "image": "assets/images/gallery/gal_1794586782_19f482.png",
+        "date": "Today",
+        "desc": "High shear blending tank."
+    },
+    {
+        "id": "GAL-1794585153372",
+        "title": "Coimbatore High-Viscosity Automated Blending Unit",
+        "category": "facilities",
+        "categoryName": "Plant & Facilities",
+        "image": "assets/images/gallery/gal_1794585153_707ae2.png",
+        "date": "Today",
+        "desc": "Fully automated PLC-controlled inline blending tanks ensuring micro-tolerance kinematic viscosity compliance."
+    },
+    {
+        "id": "GAL-1",
+        "title": "Ganapathy Warehouse Drum Stockyard",
+        "category": "depot",
+        "categoryName": "Depot & Storage",
+        "image": "assets/images/gallery/drum_warehouse.jpg",
+        "date": "2026-10-25",
+        "desc": "Central stockyard storing 1,400+ sealed barrels ready for dispatch."
+    },
+    {
+        "id": "GAL-2",
+        "title": "Heavy Duty Lubricant Pouring Inspection",
+        "category": "products",
+        "categoryName": "Product Showcase",
+        "image": "assets/images/gallery/engine_oil_pour.jpg",
+        "date": "2026-10-22",
+        "desc": "Viscosity test and clarity check on premium 15W-40 diesel oil."
+    },
+    {
+        "id": "GAL-3",
+        "title": "High-Load Wheel Bearing Red Grease",
+        "category": "products",
+        "categoryName": "Product Showcase",
+        "image": "assets/images/gallery/bearing_grease.jpg",
+        "date": "2026-10-20",
+        "desc": "Premium lithium soap formulation for commercial heavy vehicle hubs."
+    },
+    {
+        "id": "GAL-4",
+        "title": "CNC Coolant Performance at Machining Unit",
+        "category": "products",
+        "categoryName": "Product Showcase",
+        "image": "assets/images/gallery/cnc_coolant.jpg",
+        "date": "2026-10-18",
+        "desc": "SoluCut water-soluble coolant in operation at precision lathe CNC facility."
+    },
+    {
+        "id": "GAL-5",
+        "title": "Central Distribution Depot & Dispatch Dock",
+        "category": "depot",
+        "categoryName": "Depot & Storage",
+        "image": "assets/images/gallery/plant.jpg",
+        "date": "2026-10-15",
+        "desc": "Loading dock at Ganapathy handling daily bulk dealer dispatches."
+    },
+    {
+        "id": "GAL-6",
+        "title": "Commercial Transport Consignment Handover",
+        "category": "fleet",
+        "categoryName": "Fleet Delivery",
+        "image": "assets/images/gallery/blending_plant.jpg",
+        "date": "2026-10-12",
+        "desc": "Same-day delivery vehicle dispatched for Coimbatore engineering cluster."
+    }
+]

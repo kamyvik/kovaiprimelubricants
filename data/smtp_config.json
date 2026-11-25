@@ -1,0 +1,12 @@
+{
+    "enabled": false,
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "smtp_user": "kovaiprimelubricants24@gmail.com",
+    "smtp_password": "",
+    "from_email": "kovaiprimelubricants24@gmail.com",
+    "to_emails": [
+        "kovaiprimelubricants24@gmail.com",
+        "sales@kovaiprimelubricants.com"
+    ]
+}

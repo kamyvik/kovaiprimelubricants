@@ -1,0 +1,12 @@
+# Dependencies & Temporary Files
+node_modules/
+__pycache__/
+*.pyc
+.vercel/
+
+# Sensitive or Log Files
+*.log
+.env
+.env.local
+.DS_Store
+Thumbs.db

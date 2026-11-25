@@ -2,6 +2,28 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
+// Security: In-Memory Brute Force Defense (CWE-307)
+const FAILED_LOGIN_ATTEMPTS = new Map();
+
+function checkLoginRateLimit(ip) {
+    const now = Date.now();
+    let attempts = FAILED_LOGIN_ATTEMPTS.get(ip) || [];
+    attempts = attempts.filter(t => (now - t) < 300000); // 5-minute sliding window
+    FAILED_LOGIN_ATTEMPTS.set(ip, attempts);
+    return attempts.length < 5;
+}
+
+function recordFailedAttempt(ip) {
+    const now = Date.now();
+    let attempts = FAILED_LOGIN_ATTEMPTS.get(ip) || [];
+    attempts.push(now);
+    FAILED_LOGIN_ATTEMPTS.set(ip, attempts);
+}
+
+function clearAttempts(ip) {
+    FAILED_LOGIN_ATTEMPTS.delete(ip);
+}
+
 function verifyPassword(storedHash, inputPassword) {
     if (!storedHash || !inputPassword) return false;
     try {
@@ -30,6 +52,15 @@ module.exports = (req, res) => {
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (req.method !== 'POST') return res.status(405).json({ status: 'error', message: 'Method not allowed' });
 
+    const clientIp = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '127.0.0.1').split(',')[0].trim();
+
+    if (!checkLoginRateLimit(clientIp)) {
+        return res.status(429).json({
+            status: 'error',
+            message: 'Too many failed login attempts. Please wait 5 minutes before trying again.'
+        });
+    }
+
     let body = req.body || {};
     if (typeof body === 'string') {
         try { body = JSON.parse(body); } catch (e) {}
@@ -50,10 +81,11 @@ module.exports = (req, res) => {
     const matched = users.find(u => (u.username || '').toLowerCase() === username && verifyPassword(u.password_hash, password));
 
     if (matched) {
+        clearAttempts(clientIp);
         const token = crypto.randomBytes(24).toString('hex');
         const maxAge = remember ? 604800 : 86400;
 
-        res.setHeader('Set-Cookie', `kpl_session=${token}; Path=/; Max-Age=${maxAge}; SameSite=Lax`);
+        res.setHeader('Set-Cookie', `kpl_session=${token}; Path=/; Max-Age=${maxAge}; HttpOnly; SameSite=Lax`);
         return res.status(200).json({
             status: 'success',
             token,
@@ -65,6 +97,7 @@ module.exports = (req, res) => {
             }
         });
     } else {
+        recordFailedAttempt(clientIp);
         return res.status(401).json({
             status: 'error',
             message: 'Invalid username or password.'

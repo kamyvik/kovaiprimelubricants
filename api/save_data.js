@@ -1,6 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
+function isAuthenticated(req) {
+    const cookieHeader = req.headers.cookie || '';
+    if (cookieHeader.includes('kpl_session=')) {
+        const token = cookieHeader.split('kpl_session=')[1].split(';')[0].trim();
+        if (token && token.length >= 16) return true;
+    }
+    const authHeader = req.headers.authorization || '';
+    if (authHeader.startsWith('Bearer ') && authHeader.length > 20) {
+        return true;
+    }
+    return false;
+}
+
 module.exports = (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -8,6 +21,14 @@ module.exports = (req, res) => {
 
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (req.method !== 'POST') return res.status(405).json({ status: 'error', message: 'Method not allowed' });
+
+    // Penetration Testing Guard: Require Authenticated Admin Session (CWE-306 Fix)
+    if (!isAuthenticated(req)) {
+        return res.status(401).json({
+            status: 'error',
+            message: 'Unauthorized: Valid administrator session required to modify master data.'
+        });
+    }
 
     let payload = req.body || {};
     if (typeof payload === 'string') {

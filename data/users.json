@@ -6,7 +6,7 @@
         "role": "Founder & Managing Director",
         "email": "manimegalai@kovaiprimelubricants.com",
         "phone": "+91 63800 19886",
-        "password_hash": "pbkdf2_sha256$100000$85082ca18174ffa7028ee1f07af4acc1$50974d011c35d8ef68649c708c77fdf641fd943d1fdb8d2e11b7a417f92c56eb",
+        "password_hash": "pbkdf2_sha256$100000$39f6cc703750e3fbeab32de88c5f5f69$a16183f29a76c7e46a274759f0fc3e05f57ecf59b2c20133065d365c5e540a13",
         "avatar_icon": "fas fa-crown",
         "badge_color": "warning",
         "created_at": "2026-11-12 20:00:00"
@@ -18,7 +18,7 @@
         "role": "Managing Partner / Operations",
         "email": "karan@kovaiprimelubricants.com",
         "phone": "+91 96551 55266",
-        "password_hash": "pbkdf2_sha256$100000$557c0526e66784b0f2d91bef2b870c7e$6e6e27523efba269f755c327367fa152dfb4664c72916b2d587e030ebdfedfee",
+        "password_hash": "pbkdf2_sha256$100000$00084fb0aa7c794fa628d28f9e7599c1$d3975cd595818e0c4bed0ae5a5a0b12e4e665d853f38264e9f31d0c6678a2c7b",
         "avatar_icon": "fas fa-user-gear",
         "badge_color": "primary",
         "created_at": "2026-11-12 20:00:00"
@@ -30,7 +30,7 @@
         "role": "System Operations Lead",
         "email": "kovaiprimelubricants24@gmail.com",
         "phone": "+91 96551 55266",
-        "password_hash": "pbkdf2_sha256$100000$9b13d93fac8c2e3653419c1154290a3e$5e06e2c0d115877e3f8f3ad1d37961a54248bf81fbc069e71e3a0d6e78970471",
+        "password_hash": "pbkdf2_sha256$100000$7c66eb2857cf539abb936c1d9ba0ac30$3ba488b83618689f897cbe1abdc44b9bf413efde7035ed1db99d008c6647cebe",
         "avatar_icon": "fas fa-shield-halved",
         "badge_color": "dark",
         "created_at": "2026-11-12 20:00:00"
